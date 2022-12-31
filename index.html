@@ -1,0 +1,334 @@
+<html lang="en-us">
+<link href="styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<body>
+<nav>
+    <ol>
+        <li>
+            <a href="./">Portfolio/Home</a>
+        </li>
+        <li>
+            <a href="./project.html">Case Study/Project</a>
+        </li>
+    </ol>
+</nav>
+<main>
+<h1>Portfolio</h1>
+<ol class="portfolio">
+    <li>
+        <h2>Building a site</h2>
+        <p>Build your multi-page site. Host it on GitHub, with at least two pages: index (your
+            portfolio) and project. Feel free to add more pages (about etc) and make your index and into page. If
+            you do this make a clear portfolio page – this is what we will mark.</p>
+        <div>
+            <p>This <a href="./">Website</a> is hosted via Github pages</p>
+        </div>
+    </li>
+    <li>
+        <h2>Embedding</h2>
+        <p>Embed three charts, two that are given to you in class. One (as homework) taken from the
+            repository of charts that drive www.rapidcharts.io</p>
+        <div>
+            <div>
+                <img src="images/uk-gdp.png" />
+            </div>
+        </div>
+    </li>
+    <li>
+        <h2>Hosting data</h2>
+        <p>Embed two charts of your own design: (a) from a given API, (b) from the same/related
+            data saved to your GitHub.</p>
+        <div>
+            <div class="chartJs">
+                <canvas></canvas>
+                <script type="text/data">
+                    {
+                        "type": "bar",
+                        "data": {
+                          "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                          "datasets": [{
+                            "label": "# of Votes",
+                            "data": [12, 19, 3, 5, 2, 3],
+                            "borderWidth": 1
+                          }]
+                        },
+                        "options": {
+                          "scales": {
+                            "y": {
+                              "beginAtZero": true
+                            }
+                          }
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </li>
+    <li>
+        <h2>Editing data, writing JSON by hand</h2>
+        <p>Two more charts. One where you change the data (add an
+            observation, add a series, create a new series); One where the data is “in-line” JSON that you write. This
+            second chart need only have 5 or so observations.</p>
+        <div>
+            <div>
+                <div class="chartJs">
+                    <canvas></canvas>
+                    <script type="text/data">
+                    {
+                        "type": "pie",
+                        "data": {
+                          "labels": ["Male", "Female"],
+                          "datasets": [{
+                            "label": "# of Students Cpe",
+                            "data": [70,30],
+                            "borderWidth": 1
+                          }]
+                        },
+                        "options": {
+                        }
+                    }
+                    </script>
+                </div>
+
+                <div class="chartJs">
+                    <canvas></canvas>
+                    <script type="text/data">
+                    {
+                        "type": "pie",
+                        "data": {
+                          "labels": ["Male", "Female"],
+                          "datasets": [{
+                            "label": "# of Students Nursing",
+                            "data": [30,70],
+                            "borderWidth": 1
+                          }]
+                        },
+                        "options": {
+                        }
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <h2>API driven charts</h2>
+        <p>Embed two charts of your own design from two separate APIs that you sign up for &
+            gain access to.</p>
+        <div>
+            <div class="chartJs">
+                <h3>Crypto Portfolio $ Value</h3>
+                <canvas></canvas>
+                <p>This chart fetches the price from Binance API</p>
+                <script type="text/javascript-function">
+                    async function getCryptoPrice(crypto) {
+                        json = await  fetch('https://api.binance.com/api/v3/ticker/price?symbol=' + crypto + 'USDT')
+                            .then((r) => r.json());
+                        return json.price;
+                    }
+                    ( async () => {
+                        let cryptoQty = {
+                            "BTC": 1.56,
+                            "ETH": 8.12,
+                            "XRP": 32234.82
+                        };
+
+                        let labels = [];
+
+                        for (const [crypto, qty] of Object.entries(cryptoQty)) {
+                            labels.push(qty + " " + crypto);
+                        }
+                        let cryptoData = [];
+                        for (const [crypto, qty] of Object.entries(cryptoQty)) {
+                            let price = await  getCryptoPrice(crypto)*qty;
+                            cryptoData.push(price);
+                        }
+                        data = {
+                            "type": "pie",
+                            "data": {
+                              labels,
+                              "datasets": [{
+                                "label": "Crypto Value",
+                                data: cryptoData,
+                                "borderWidth": 1
+                              }]
+                            },
+                            "options": {
+                            }
+                        };
+                        return data;
+                    })();
+                </script>
+            </div>
+        </div>
+    </li>
+    <li>
+        <h2>Loops and APIs</h2>
+        <p>Download code from an API using fetch in Python/Colab and chart this. Use a loop to
+            batch download data.</p>
+        <div>
+            <p>This website is hosted via github pages: https://github.com/YigeWang0312/data-science</p>
+        </div>
+    </li>
+    <li>
+        <h2>Loops and scrapers</h2>
+        <p>Build a scraper in Colab, save and chart the results.</p>
+        <div>
+
+        </div>
+    </li>
+    <li>
+        <h2>Merging data</h2>
+        <p>Build a chart with data from two separate sources. Plot these data using correlation,
+            regression or some other technique.</p>
+        <div>
+            <div class="table">
+                <table>
+                    <caption>Travel Ideas</caption>
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>ETA/Duration</th>
+                            <th>Weather</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Blenhelm Palace</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Canterbury Cathedral</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Windsor Castle</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Stonehedge</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>Peak District National Park</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>This table combines data from weatherapi.com and google.com's direction API</p>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZkcc6D3OmYOsunlNNSyeOx3KGYPLGids"></script>
+                <script type="text/javascript" defer class="expose">
+                    const table = document.currentScript.closest('div').querySelector('table');
+                    const rows = table.querySelectorAll('tbody tr');
+                    const locations = [...rows].map( (row) => row.querySelector('td').innerText );
+
+                    for (let x = 0; x<locations.length; x++) {
+                        const location = locations[x] + ', UK';
+                        const row = rows[x];
+                        const cells = row.querySelectorAll('td');
+                        const etaCell = cells[1];
+                        const weatherCell = cells[2];
+                        (async () =>  etaCell.innerText = await getDrivingEta(location))();
+                        (async () =>  weatherCell.innerHTML = await getWeather(location))();
+                    }
+
+                    async function getWeather(location) {
+                        const apiKey = '568507c821cc4c5997352427220107';
+                        const apiUrl = 'https://api.weatherapi.com/v1/current.json?key='
+                        + apiKey
+                        + '&q=' + location + '&aqi=no';
+
+                        json = await  fetch(apiUrl)
+                            .then((r) => r.json());
+                        return '<img src="'+ json.current.condition.icon + '" class="weather-icon" /> '
+                            +json.current.condition.text;
+                    }
+
+                    async function getDrivingEta(location) {
+                        const service = new google.maps.DistanceMatrixService();
+                        json = await service.getDistanceMatrix(
+                            {
+                                origins: ['London'],
+                                destinations: [ location ],
+                                travelMode: 'DRIVING'
+                            },
+                            (json) => {
+                                //console.log(json);
+                            }
+                        );
+                        return json.rows[0]?.elements[0]?.duration.text;
+                    }
+                </script>
+        </div>
+    </li>
+    <li>
+        <h2>Advanced analytics</h2>
+        <p>Build and embed a chart that uses advanced statistical methods, testing causality
+            or distribution</p>
+        <div>
+            <p>This website is hosted via github pages: https://github.com/YigeWang0312/data-science</p>
+        </div>
+    </li>
+    <li>
+        <h2>Interactivity.</h2>
+        <p>Build and embed two interactive charts.</p>
+        <div>
+        </div>
+    </li>
+</ol>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer>
+        document.querySelectorAll('div.chartJs').forEach(
+            async function(el) {
+                const ctx = el.querySelector('canvas');
+                const dataFunction = ctx.getAttribute('data-data-function');
+                const dataEl = el.querySelector('script[type="text/data"]');
+                const dataScript = el.querySelector('script[type="text/javascript-function"]');
+                let data;
+                let code;
+                let codeLanguage = 'javascript';
+                if (dataEl) {
+                    code = dataEl.innerText;
+                    data = JSON.parse(dataEl.innerText);
+                    codeLanguage = 'json';
+                }
+                else if (dataScript) {
+                    code = dataScript.innerText;
+                    await eval(dataScript.innerText);
+                }
+                if (code) {
+                    exposeCode(code, codeLanguage, el);
+                }
+
+                new Chart(ctx, data);
+            }
+        );
+
+
+        function exposeCode(code, language, parentEl) {
+            const firstLineWhiteSpace = code.match(/(?<=\n)\s+(?=\S)/m);
+            code = code.replaceAll(firstLineWhiteSpace[0],'');
+            const codeEl = document.createElement('pre');
+            codeEl.innerHTML = '<code>' + hljs.highlight(code, {language}).value + '</code>';
+            parentEl.appendChild(codeEl);
+        }
+
+        document.querySelectorAll('script.expose').forEach(
+            (el) => {
+                exposeCode(
+                    el.innerText,
+                    'javascript',
+                    el.closest('div')
+                );
+            }
+        );
+    </script>
+</main>
+</body>
+</html>

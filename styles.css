@@ -1,0 +1,122 @@
+
+body {
+    font-size:12px;
+}
+a {
+    text-decoration: none;
+    color:#0000cc;
+}
+main, nav {
+    width: 80rem;
+    margin:0 auto;
+    background:#efefef;
+}
+nav {
+    font-family: Verdana, sans-serif;
+    font-size:0.9em;
+}
+nav ol {
+    list-style: none;
+    display:grid;
+    grid-template-columns: auto auto;
+    padding:0;
+    margin:0;
+    width:100%;
+}
+nav ol li {
+    text-align:center;
+    padding:0.5em 5em;
+    background:#ddd;
+}
+main {
+    padding:0 0 3em;
+}
+h1 {
+    text-align:center;
+    color:#777;
+    font-size:4em;
+    font-family: "Times New Roman", serif;
+    margin-top:0;
+}
+main  > ol {
+    list-style: none;
+}
+main > ol > li {
+    margin-top:3em;
+    margin-bottom:3em;
+}
+h2 {
+    font-size:1.5em;
+    font-family: Verdana, Arial, sans-serif;
+    color:#777;
+    margin-bottom:0;
+}
+h3 {
+    font-family: Verdana, Arial, sans-serif;
+}
+main > ol.portfolio li > p {
+    font-size:0.8em;
+    color:#aaa;
+}
+main > ol li div {
+    font-size:1em;
+    font-family: Verdana, Arial,  sans-serif;
+}
+main ol li.figures {
+    text-align:center;
+}
+main ol li.figures figure {
+    display:inline-block;
+    width:45%;
+    background:#fff;
+    padding:2em 0;
+    margin:0;
+}
+li.citations {
+    font-size:0.8em;
+}
+
+main ol.portfolio div.chartJs {
+    display:inline-block;
+    width:30%;
+    text-align:center;
+}
+main ol.portfolio canvas + p,
+main ol.portfolio table + p
+{
+    color:#888;
+}
+main ol.portfolio pre {
+    text-align:left;
+}
+main ol.portfolio pre code {
+    display:block;
+    background:#dfdfdf;
+    border:1px solid #cfcfcf;
+    padding:0.5em 1em;
+    overflow:scroll;
+    font-size:0.8em;
+    margin:3em 2em;
+}
+table {
+    width:100%;
+    border:1px solid #ddd;
+    border-spacing:0;
+}
+table caption {
+    background:#ccc;
+    padding:0.25em 0;
+}
+table tr {
+}
+table tr td:first-child {
+    text-align:center;
+    width:20%;
+}
+table td, table th  {
+    text-align:center;
+    border:1px solid #ddd;
+}
+img.weather-icon {
+    max-height:1.5em;
+}
