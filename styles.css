@@ -145,7 +145,7 @@ main ol.portfolio table + p
     color:#888;
 }
 main ol.portfolio pre {
-    display:block;
+    display:none;
     text-align:left;
     width:90%;
 }
@@ -188,7 +188,7 @@ main ol.project table + p
     color:#888;
 }
 main ol.project pre {
-    display:block;
+    display:none;
     width:100%;
     text-align:left;
 }
