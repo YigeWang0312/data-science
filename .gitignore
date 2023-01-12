@@ -1,1 +1,4 @@
-.idea/*
+.idea/
+.idea/workspace.xml
+.idea/php.xml
+.idea/vcs.xml
