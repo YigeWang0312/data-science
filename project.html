@@ -1678,6 +1678,9 @@
                 <li>
                     <a href="#vega-democrat-lean">Democrat Lean</a>
                 </li>
+                <li>
+                    <a href="#vega-white-percentage">Young(<=34) Percentage</a>
+                </li>
             </ol>
             <div id="vega-vaccination-rate"  class="tab-content active">
                 <div class="vega-container">
@@ -1730,9 +1733,53 @@
                           ],
                         "projection": {"type": "albersUsa"},
                         "mark": "geoshape",
-                        "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
+                        "encoding": {
+                            "color": {
+                                "field": "RATE",
+                                "type": "quantitative",
+                                "domainMax": 0.5,
+                                "domainMin": 0.3
+                            }
+                        }
                     }
                     </script>
+                </div>
+            </div>
+            <div id="vega-white-percentage"  class="tab-content">
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Young(<=34) Percentage</div>
+                    <script type="text/data">
+                        {
+                            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                            "data": {
+                                "url": "data/states2.json",
+                                "format": {"type": "topojson", "feature": "states"}
+                            },
+                              "transform": [
+                                {
+                                  "lookup": "id",
+                                  "from": {
+                                    "data": {"url": "data/34-yo-below.csv"},
+                                    "key": "fips",
+                                    "fields": ["percentage"]
+                                  }
+                                }
+                              ],
+                            "projection": {"type": "albersUsa"},
+                            "mark": "geoshape",
+                            "encoding": {
+                                "color": {
+                                    "field": "percentage",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domainMax": 0.55,
+                                        "domainMin": 0.3
+                                    }
+                                }
+                            }
+                        }
+                        </script>
                 </div>
             </div>
         </div>
