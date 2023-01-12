@@ -136,15 +136,18 @@ main ol.portfolio table + p
     color:#888;
 }
 main ol.portfolio pre {
+    display:block;
     text-align:left;
+    width:100%;
 }
 main ol.portfolio pre code {
     display:block;
-    background:#dfdfdf;
+    width:100%;
+    background:#222;
     border:1px solid #cfcfcf;
     padding:0.5em 1em;
     overflow:scroll;
-    font-size:0.8em;
+    font-size:0.7em;
     margin:3em 2em;
 }
 table {
