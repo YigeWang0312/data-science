@@ -106,10 +106,17 @@ nav .nav-menu a:last-child{
 main > ol.portfolio {
     margin:0;
 }
-main > ol.portfolio li {
+main > ol.portfolio > li {
+    display:inline-block;
+    width:90%;
     background:#080808;
     border:solid 1px #333;
     padding:1.5em;
+    margin:1em;
+    vertical-align: top;
+}
+main > ol.portfolio > li.half {
+    width:40%;
 }
 main > ol.portfolio li > p {
     font-size:0.8em;
