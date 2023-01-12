@@ -15,39 +15,113 @@
 <h1>Case Study/Project</h1>
 <ol>
     <li>
-        <h2>Hypothesess</h2>
-        <ol>
-            <li>Nuclear energy is safer than traditional energy sources such as coal</li>
-            <li>Nuclear energy is cleaner than wind/solar energy</li>
-        </ol>
+        <h2>Introduction</h2>
+        <p>
+            Although the USA's vaccination programme has been urgent and comprehensive, by the end of 2021,
+        there were significant regional differences in the population's coverage of the COVID-19 vaccine.
+        Using ordinary least squares and fixed-effects modelling, this research finds several socio-economic
+        variables that contribute to heterogeneity in state-level vaccination coverage and offers
+        recommendations for improving vaccination rates in light of the findings.
+        </p>
     </li>
     <li>
-        <h2>Sypnosis</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis elementum tortor, suscipit pulvinar magna euismod a. Cras aliquam felis ac lorem bibendum volutpat. Phasellus tristique sem id purus venenatis viverra. Morbi aliquam et est ut bibendum. Sed mattis massa ac tincidunt feugiat. Duis imperdiet ac magna vel ultricies. Curabitur nec fermentum lectus. Sed tristique purus ut fermentum congue. Etiam eget lacinia diam. Nunc vitae egestas lacus. Suspendisse ultrices lectus facilisis risus egestas, quis tincidunt tortor venenatis.</p>
+        <h2>Data for panel regression</h2>
+        <p>
+            Table X summarises state-level economic and sociodemographic data from the 2020–2021 censuses conducted by the CDC, US Census Bureau, FRED, and US Bureau for Labor Statistics. Due to missing data and measurement error effects between datasets, California, Hawaii, and New Hampshire have been left out. In addition to the proportion of a state's population completely immunised, statistics are divided into four primary groups:
+        </p>
+        <ol>
+            <li>Socio-economic status (average income, unemployment rate, percentage of people with a bachelor's degree or above, percentage of people with health insurance)</li>
+            <li>Ethnicity and race (share of White, Black, Indian, Hawaiian, Asian, Hispanic, and Non- Hispanic population)</li>
+            <li>Age (shares of population categorised by age) (shares of population grouped by age)</li>
+            <li>Political Alignment (percentage of the population firmly supporting the Democrats, Republicans, or neither)</li>
+        </ol>
+        <p>
+            An ongoing research effort by Pew Research employs telephone surveys to ask respondents their political affiliation among three options: Republican, Democrat, or no strong alignment. This project collects political data on an annual basis.
+        </p>
     </li>
     <li class="figures">
-       <h2>Workplace Casualties</h2>
-        <figure>
-            <img src="images/dummy-piechart.jpg" />
-            <figcaption>Workplace casualties by energy sources</figcaption>
-        </figure>
-        <figure>
-            <img src="images/dummy-piechart.jpg" />
-            <figcaption>Energy produced per human casualties</figcaption>
-        </figure>
+        <h2>Data Quality Commentary</h2>
+        <p>
+            Data on political affinity was gathered over the phone with few answer possibilities (Republican, Democrat, or neither). State-level sample sizes were sufficiently big, ranging between 300 and 3000+, even though the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be some attenuation biases from measurement errors. As a result, the estimations in this work should be regarded as cautious.
+        </p>
     </li>
-
+    <li>
+        <h2>Methods</h2>
+        <p>
+            We will use Ordinary Least Squares, with Fixed Effects to model the impact of various state characteristics on vaccination rates.
+        </p>
+        <p>
+            Before creating the model, irrelevant variables were eliminated using a variety of techniques. The variables that did not have a sufficient low (|r| 0.5) Pearson product correlation coefficient when connected with other variables were also removed. Models with the least amount of multicollinearity and the lowest variation inflation factor were chosen (VIF). Thus, factors such as the unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors.
+        </p>
+        <!-- TODO: Display a table of the ‘Model Summary’ page from the TABLES TO USE excel -->
+        <table></table>
+    </li>
+    <li>
+        <h2>Model Results</h2>
+        <p>
+            Estimates of the coefficients for the explanatory variables of the models are shown in Table 4. If all other variables are held constant, a coefficient should be understood as an evaluation of the marginal effect that its explanatory variable has on the state vaccination rate. All models have relatively high R-squared values (> 0.78), which indicates that most of the variation in COVID-19 vaccination coverage across different states can be attributed to factors such as income per capita, political alignment, the percentage of the population that is black, age, and education.
+        </p>
+        <p>
+            In all three of its baseline OLS regressions (models 1, 3, and 5), the coefficient on per capita income is found to be significant and positive, indicating that an increase of $1 in per capita income (controlling for all other variables) should correspond to an expected increase in state vaccination coverage of anywhere between 0.0003% and 0.0018% on average, depending on which model we examine. The coefficient on income per capita in the FE models shifts from significant to negative in model 2, indicating that the fixed effects are mostly responsible for the variance in vaccination coverage and that the income per capita effects are weaker than first believed.
+        </p>
+        <p>
+            All OLS models, along with most of the FE models, show positive and substantial coefficients for a state's Democratic alignment. The predicted increase in state vaccination coverage by 1% should be between 0.6% and 2.4% on average, depending on how strongly the Democratic Party is represented in the state's population. Similarly, when model 7 and model 9 are compared, the Republican alignment coefficient is shown to be substantial, negative, and numerically close to the Democratic alignment coefficient. According to model 9, a 1% rise in the number of strongly Republican state residents should cause the state's vaccination coverage to drop by an average of 0.56%.
+        </p>
+        <p>
+            In all OLS models, the coefficient on the Black population is negative and substantial. Therefore, a 1% increase in a state's share of black people should result in a projected fall in the state's vaccination coverage of between 0.24% and 0.37%. In FE models, it is less significant and occasionally even positive, indicating that the state level fixed effects are mostly responsible for the fluctuation.
+        </p>
+        <p>
+            In its OLS models, the age coefficient for the larger 0 to 34 age range is substantial and negative. In contrast, the coefficient for the narrower age variable of 19 to 34 is also negative and significant within its OLS models, meaning that an expected decrease in state vaccination coverage of between 1.25% and 1.71% should result from a 1% increase in the proportion of the population in a state aged between 19 and 34. Although both variables' coefficients are still negative in all except 2 and 8 FE models, they are not significant.
+        </p>
+        <p>
+            Finally, a 1% rise in the percentage of a state's population with a bachelor's degree or more should result in an average increase in state vaccination coverage of between 0.67% and 0.79%, according to OLS models and FE model 8 where the coefficient on education is positive and substantial.
+            Most of these state-level findings concur with individual-level findings from the highlighted logistic models in Section 2.
+        </p>
+        <!-- use the results table that I made in excel – “TABLES TO USE”, OLS Results – either page is ok -->
+        <table></table>
+    </li>
+    <li>
+        <h2>Policy Guidance (based on the OLS results)</h2>
+        <p>
+            Common vaccine obstacles connected to the findings of this article are included in the CDC's immunisation strategy guide (2021). First off, structural impediments contribute to the favourable association between income per capita and vaccine coverage. Although the vaccine is free, the vaccination procedure might be expensive. To travel to a vaccination centre, people may have to pay for transportation, or they may miss a day of paid work while recovering from the adverse effects of vaccination. Policymakers who focus on removing these barriers can increase vaccination rates by lowering the direct costs and opportunity costs of receiving a vaccine, such as providing free transportation or paying for lost wages from missing work, though the latter may be challenging to implement because people may take unnecessarily long sick leave.
+        </p>
+        <p>
+            Regarding per capita income, there is also a knowledge gap. According to a poll done by the US Census Bureau in the middle of 2021, 6.9 million Americans were unwilling to get immunised because they felt it cost money, which represents a communication failure on the part of medical authorities. States and counties need to concentrate on ensuring the populace that immunisations are free. According to Dai et al. (2021), it is substantially more effective to provide this information as a series of text message prompts. Cultural norms and informational obstacles interact to cause vaccination reluctance. Black women and other minorities were sterilised without their knowledge during the 20th century (White and Potter, 2013), and the Tuskegee Syphilis Study involved ethical misconduct. Molalo and Tatar (2021) underline the long-term effects of this legacy of racial injustice in the healthcare system. Consequently, as seen by the findings in Table 4, the community-wide scepticism of new or emergency-authorized vaccinations has steadily developed among black people and other non-white ethnic groups. Ambassadors of the same race as their target audience should be chosen by policymakers to develop informational and communicational campaigns. According to survey data gathered by Malik et al. (2020), black communities are more likely to intend to take vaccinations if a member of their own race teaches them about the vaccine and addresses any concerns they may have.
+        </p>
+        <p>
+            The findings of this paper regarding Republican and Democratic influences on state-level vaccination differences agree with Viswanath et al. (2021), who identify the spread of false information on social media and in conservative media as a major factor in lower vaccination rates. An example of this is when Donald Trump falsely claimed that vaccines can cause autism before the pandemic. Policymakers may concentrate on boosting confidence in scientists and medical experts while simultaneously persuading prominent figures to endorse vaccination, even if it might be difficult to change a politically constrained viewpoint. The CDC (2021) notes that the COVID-19 vaccination has become politicised over the past two years and urges the public to respond to internet rumours with factual statements rather than aggressive or uninformative ones.
+        </p>
+        <p>
+            This report discovered younger people had a negative impact on state-level immunisation rates, which was in line with prior findings. These age groups feel less need to get immunised because global COVID-19 death statistics 6 reveal that the virus is substantially less severe in children and young people. This is further explained by the fact that younger age groups receive vaccines later in time than older ones; this lets the younger generations know that they are less important and pose less health risks. Authorities can try to establish "fear of missing out" incentives, such as restricting entry to nightclubs to those who have had their complete vaccinations, in addition to boosting SMS and informational prompts. By introducing vaccine centres to huge school or university halls, they can once again concentrate on making the immunisation procedure more convenient.
+        </p>
+        <p>
+            Education's beneficial effects on vaccination rates may be related to differences in health literacy. People with higher levels of education may find it easier to understand the complex information about vaccines and the rapidly changing guidelines, as well as to recognise and disregard misinformation, than people with lower levels of education. For people with lower levels of education, it is crucial that news and information concerning vaccinations be made simpler to understand.
+        </p>
+    </li>
     <li>
         <h2>Conclusion</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis elementum tortor, suscipit pulvinar magna euismod a. Cras aliquam felis ac lorem bibendum volutpat. Phasellus tristique sem id purus venenatis viverra. Morbi aliquam et est ut bibendum. Sed mattis massa ac tincidunt feugiat. Duis imperdiet ac magna vel ultricies. Curabitur nec fermentum lectus. Sed tristique purus ut fermentum congue. Etiam eget lacinia diam. Nunc vitae egestas lacus. Suspendisse ultrices lectus facilisis risus egestas, quis tincidunt tortor venenatis.</p>
+        <p>
+            This study discovers that several socioeconomic factors strongly affect state-level variance in complete vaccination coverage in the United States. Better wealth per capita, Democrat alignment, and educational levels can explain states with higher vaccine coverage, whereas states with lower vaccination coverage can be explained by higher numbers of Black people, stronger Republican alignment, and younger populations.
+        </p>
+        <p>
+            By reducing the direct and indirect costs of vaccination as well as other inconveniences related to the process of acquiring a vaccine, such as travel distance, policymakers can work to decrease state-level heterogeneity and boost overall vaccination rates. Additionally, interventions may be made to target Black people, individuals of younger ages, and those with lower levels of education by enhancing the accessibility and simplicity of information through text prompts and ambassador programmes to foster motivation and trust. Other crucial actions include stepping up social media outreach and fighting false information.
+        </p>
     </li>
     <li class="citations">
-        <h2>Citations</h2>
+        <h2>Reading References List</h2>
         <ol>
-            <li>https://www.sciencedirect.com/topics/earth-and-planetary-sciences/nuclear-research#:~:text=Most%20nuclear%20research%20programs%20use,some%20medical%20and%20biological%20experiments.</li>
-            <li>https://www.sciencedirect.com/topics/earth-and-planetary-sciences/nuclear-research#:~:text=Most%20nuclear%20research%20programs%20use,some%20medical%20and%20biological%20experiments.</li>
-            <li>https://www.sciencedirect.com/topics/earth-and-planetary-sciences/nuclear-research#:~:text=Most%20nuclear%20research%20programs%20use,some%20medical%20and%20biological%20experiments.</li>
-            <li>https://www.sciencedirect.com/topics/earth-and-planetary-sciences/nuclear-research#:~:text=Most%20nuclear%20research%20programs%20use,some%20medical%20and%20biological%20experiments.</li>
+            <li>Centres for disease control and prevention - covid-19 vaccination field guide: 12 strategies for your community. (2021). url: https://www.cdc.gov/vaccines/covid- 19/downloads/vaccination-strategies.pdf. (Accessed: 2022-05-07)</li>
+            <li>Clulow, Z., Reiner, D. M., et al. (2022). How to distinguish climate sceptics, antivaxxers, and persistent sceptics: Evidence from a multi-country survey of public attitudes (Tech. Rep.). JSTOR.</li>
+            <li>Dai, H., Saccardo, S., Han, M. A., Roh, L., Raja, N., Vangala, S., . . . Croymans, D. M. (2021). Behavioural nudges increase covid-19 vaccinations. Nature, 597(7876), 404–409.</li>
+            <li>Garbinsky, D., Hunter, S., La, E. M., Poston, S., & Hogea, C. (2021). State-level variations and factors associated with adult vaccination coverage: A multilevel modeling approach. PharmacoEconomics-Open, 5(3), 411–423.</li>
+            <li>Khubchandani, J., Sharma, S., Price, J. H., Wiblishauser, M. J., Sharma, M., & Webb, F. J. (2021). Covid-19 vaccination hesitancy in the United States: a rapid national assess- ment. Journal of Community Health, 46(2), 270–277.</li>
+            <li>Malik, A. A., McFadden, S. M., Elharake, J., & Omer, S. B. (2020). Determinants of covid-19 vaccine acceptance in the us. EClinicalMedicine, 26, 100495.</li>
+            <li>Mollalo, A., & Tatar, M. (2021). Spatial modeling of covid-19 vaccine hesitancy in the United States. International Journal of Environmental Research and Public Health, 18(18), 9488.</li>
+            <li>Ochieng, C., Anand, S., Mutwiri, G., Szafron, M., & Alphonsus, K. (2021). Factors associated with covid-19 vaccine hesitancy among visible minority groups from a global context: A scoping review. Vaccines, 9(12), 1445.</li>
+            <li>Padamsee, T. J., Bond, R. M., Dixon, G. N., Hovick, S. R., Na, K., Nisbet, E. C., Garrett, R. K. (2022). Changes in covid-19 vaccine hesitancy among black and white individ- uals in the us. JAMA Network Open, 5(1), e2144470–e2144470.</li>
+            <li>Shmueli, L. (2021). Predicting intention to receive covid-19 vaccine among the general population using the health belief model and the theory of planned behavior model. BMC Public Health, 21(1), 1–13.</li>
+            <li>Solıs Arce, J. S., Warren, S. S., Meriggi, N. F., Scacco, A., McMurry, N., Voors, M., . . . oth- ers (2021). Covid-19 vaccine acceptance and hesitancy in low-and middle-income countries. Nature medicine, 27(8), 1385–1394.</li>
+            <li>Viswanath, K., Bekalu, M., Dhawan, D., Pinnamaneni, R., Lang, J., & McLoud, R. (2021). Individual and social determinants of covid-19 vaccine uptake. BMC Public Health, 21(1), 1–10.
         </ol>
     </li>
 </ol>
