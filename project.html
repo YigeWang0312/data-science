@@ -53,8 +53,58 @@
         <p>
             Before creating the model, irrelevant variables were eliminated using a variety of techniques. The variables that did not have a sufficient low (|r| 0.5) Pearson product correlation coefficient when connected with other variables were also removed. Models with the least amount of multicollinearity and the lowest variation inflation factor were chosen (VIF). Thus, factors such as the unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors.
         </p>
-        <!-- TODO: Display a table of the ‘Model Summary’ page from the TABLES TO USE excel -->
-        <table></table>
+        <table>
+            <tr>
+                <td>1 (OLS)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei + εi</td>
+                <td>Regresses % state population fully vaccinated on: state-average income per capita (inc),  % state population who strongly support Democrat (dem), proportion of state population who are Black (black), proportion of state population aged 34 and under (age)</td>
+            </tr>
+            <tr>
+                <td>2 (FE)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei + βstatestatei + εi</td>
+                <td>Same regression as model (1) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
+            </tr>
+            <tr>
+                <td>3 (OLS)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei + β5inci2 + β6demi2 + β7blacki2 + β8agei2 + εi</td>
+                <td>An extention of model (1), includes squares of  all explanatory variables (inc^2, dem^2, black^2, age^2)</td>
+            </tr>
+            <tr>
+                <td>4 (FE)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei + β5inci2 + β6demi2 + β7blacki2 + β8agei2 + βstatestatei + εi</td>
+                <td>Same regression as model (3) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
+            </tr>
+            <tr>
+                <td>5 (OLS)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agesegi + εi</td>
+                <td>An adjustment to model (1) by segmenting the age category.  Regresses % state population fully vaccinated on: state-level income per capita (inc), % state population who strongly support Democrat (dem), proportion of state population who are black (black), proportion of state population aged 19-34 (ageseg)</td>
+            </tr>
+            <tr>
+                <td>6 (FE)</td>
+                <td>Vi = β0 + β1inci + β2demi + β3blacki + β4agesegi + βstatestatei + εi</td>
+                <td>Same regression as model (5) but now includes a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
+            </tr>
+            <tr>
+                <td>7 (OLS)</td>
+                <td>Vi = β0 + β1demi + β2blacki + β3agesegi + β4educi + εi</td>
+                <td>Regress % state population fully vaccinated on: % state population who strongly support Democrat (dem), proportion of state population who are black (black), proportion of state population aged 19-34 (ageseg), % state who have achieved Bachelor's degree or higher (educ)</td>
+            </tr>
+            <tr>
+                <td>8 (FE)</td>
+                <td>Vi = β0 + β1demi + β2blacki + β3agesegi + β4educi + βstatestatei + εi</td>
+                <td>Same regression as model (7) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
+            </tr>
+            <tr>
+                <td>9 (OLS)</td>
+                <td>Vi = β0 + β1repubi + β2blacki + β3agesegi + β4educi + εi</td>
+                <td>Same regression as model (7), but the dem variable has been replaced by repub (proportion of state population who strongly support Republican)</td>
+            </tr>
+            <tr>
+                <td>10 (FE)</td>
+                <td>Vi = β0 + β1repubi + β2blacki + β3agesegi + β4educi + βstatestatei + εi</td>
+                <td>Same regression as model (9) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
+            </tr>
+        </table>
     </li>
     <li>
         <h2>Model Results</h2>
@@ -78,7 +128,128 @@
             Most of these state-level findings concur with individual-level findings from the highlighted logistic models in Section 2.
         </p>
         <!-- use the results table that I made in excel – “TABLES TO USE”, OLS Results – either page is ok -->
-        <table></table>
+        <table>
+            <tr>
+                <td>VARIABLES</td>
+                <td>(1)</td>
+                <td>(2)</td>
+                <td>(3)</td>
+                <td>(4)</td>
+                <td>(5)</td>
+                <td>(6)</td>
+                <td>(7)</td>
+                <td>(8)</td>
+                <td>(9)</td>
+            </tr>
+            <tr>
+                <td>Income</td>
+                <td>0.000339*** </td>
+                <td>-0.0009547</td>
+                <td>0.0018274**</td>
+                <td>0.0045983</td>
+                <td>0.0004008***</td>
+                <td>0.0006771*</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(0.0000961)</td>
+                <td>(0.0006483)</td>
+                <td>(0.0006374)</td>
+                <td>(0.0014637)</td>
+                <td>(0.0000894)</td>
+                <td>(0.0000792)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Income ^2</td>
+                <td>-</td>
+                <td>-</td>
+                <td> -1.09e-08*</td>
+                <td>-3.21e-08</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>(4.84e-09)</td>
+                <td>(9.26e-09)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Democrat</td>
+                <td>0.5954974***</td>
+                <td>1.602335</td>
+                <td> 2.414382*** </td>
+                <td>2.422399</td>
+                <td>0.7096269*** </td>
+                <td>0.9358065** </td>
+                <td>0.5918859***</td>
+                <td> 0.7188047*</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(0.1297388)</td>
+                <td>(0.5788273 )</td>
+                <td>(0.310921)</td>
+                <td>(1.266614)</td>
+                <td>(0.1015969)</td>
+                <td>(0.0224952)</td>
+                <td>(0.0895951)</td>
+                <td>(0.065091)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Democrat^2</td>
+                <td>-</td>
+                <td>-</td>
+                <td> -0.0209493***</td>
+                <td>-0.0222024</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>(0.0036477)</td>
+                <td>(0.0183228)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Republican</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-0.561159***</td>
+            </tr>
+        </table>
     </li>
     <li>
         <h2>Policy Guidance (based on the OLS results)</h2>
