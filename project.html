@@ -1761,15 +1761,15 @@
                             {
                               "lookup": "id",
                               "from": {
-                                "data": {"url": "data/democrat-lean.csv"},
-                                "key": "ID",
-                                "fields": ["RATE"]
+                                "data": {"url": "data/vaccination-rate.csv"},
+                                "key": "fips",
+                                "fields": ["rate"]
                               }
                             }
                           ],
                         "projection": {"type": "albersUsa"},
                         "mark": "geoshape",
-                        "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
+                        "encoding": {"color": {"field": "rate", "type": "quantitative"}}
                     }
                     </script>
                 </div>
