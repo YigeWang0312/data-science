@@ -2,7 +2,7 @@
 <html lang="en-us">
 <meta charset="UTF-8">
 <link href="styles.css" rel="stylesheet" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css">
 <style>
     table {
         max-width:100%;
@@ -11,12 +11,14 @@
         overflow: scroll;
     }
     div.tabs-container {
+        margin-top:5em;
     }
     div.tabs-container ol.tabs {
         list-style: none;
         margin:0;
         padding:0;
         font-size:1.5em;
+        text-align:left;
     }
     div.tabs-container ol.tabs li  {
         display:inline-block;
@@ -29,20 +31,23 @@
         bottom:-1px;
     }
     div.tabs-container ol.tabs li a {
-        color: #333;
+        color: #fff;
     }
     div.tabs-container div.tab-content {
         display:none;
-        padding:0.5em 1em;
+        padding:1em;
         border-width: 1px;
     }
     div.tabs-container div.tab-content.active {
         display:block;
     }
+    div.tabs-container ol.tabs li {
+        background:#222;
+    }
     /** Uniform background */
     div.tabs-container div.tab-content.active,
     div.tabs-container ol.tabs li.active  {
-        background-color:#ddd;
+        background-color:#333;
     }
     /* Uniform border */
     div.tabs-container ol.tabs li,
@@ -50,20 +55,19 @@
         border-style:solid;
         border-color:#222;
     }
-    div.tabs-container div.tab-content.active pre code {
-        background-color:#eee;
-    }
 </style>
 <body>
 <nav>
-    <ol>
-        <li>
-            <a href="./">Portfolio/Home</a>
-        </li>
-        <li>
-            <a href="./project.html">Case Study/Project</a>
-        </li>
-    </ol>
+	<div class="site-title">
+		<h3>Data Science</h3>
+		<p>by Yige Wang</p>
+	</div>
+	<div class="nav-menu">
+		<a href="./">Home</a>
+		<a href="./project.html">Project</a>
+		<a href="./portfolio.html">Portfolio</a>
+		<a href="./">Explore Github</a>
+	</div>
 </nav>
 <main>
 <h1>Case Study/Project</h1>
