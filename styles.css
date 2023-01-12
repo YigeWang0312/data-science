@@ -126,8 +126,6 @@ img.weather-icon {
 
 
 main ol.project div.vega-container {
-    display:inline-block;
-    width:49%;
     text-align:center;
 }
 main ol.project div.vega-canvas + p,

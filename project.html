@@ -10,6 +10,49 @@
     div.big-table {
         overflow: scroll;
     }
+    div.tabs-container {
+    }
+    div.tabs-container ol.tabs {
+        list-style: none;
+        margin:0;
+        padding:0;
+        font-size:1.5em;
+    }
+    div.tabs-container ol.tabs li  {
+        display:inline-block;
+        border-radius:5px 5px 0 0;
+        padding:0.5em;
+        border-width: 1px 1px 0 1px;
+    }
+    div.tabs-container ol.tabs li.active {
+        position:relative;
+        bottom:-1px;
+    }
+    div.tabs-container ol.tabs li a {
+        color: #333;
+    }
+    div.tabs-container div.tab-content {
+        display:none;
+        padding:0.5em 1em;
+        border-width: 1px;
+    }
+    div.tabs-container div.tab-content.active {
+        display:block;
+    }
+    /** Uniform background */
+    div.tabs-container div.tab-content.active,
+    div.tabs-container ol.tabs li.active  {
+        background-color:#ddd;
+    }
+    /* Uniform border */
+    div.tabs-container ol.tabs li,
+    div.tabs-container div.tab-content {
+        border-style:solid;
+        border-color:#222;
+    }
+    div.tabs-container div.tab-content.active pre code {
+        background-color:#eee;
+    }
 </style>
 <body>
 <nav>
@@ -1694,33 +1737,71 @@
         </figure>
     </li>
     <li>
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <div class="vega-caption">Democrat Lean</div>
-            <script type="text/data">
-            {
-                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "width": 600,
-                "height": 400,
-                "data": {
-                    "url": "data/states2.json",
-                    "format": {"type": "topojson", "feature": "states"}
-                },
-                  "transform": [
+        <div class="tabs-container">
+            <ol class="tabs">
+                <li class="active">
+                    <a href="#vega-vaccination-rate">Vaccination Rate</a>
+                </li>
+                <li>
+                    <a href="#vega-democrat-lean">Democrat Lean</a>
+                </li>
+            </ol>
+            <div id="vega-vaccination-rate"  class="tab-content active">
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Vaccination Rate</div>
+                    <script type="text/data">
                     {
-                      "lookup": "id",
-                      "from": {
-                        "data": {"url": "data/democrat-lean.csv"},
-                        "key": "ID",
-                        "fields": ["RATE"]
-                      }
+                        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                        "data": {
+                            "url": "data/states2.json",
+                            "format": {"type": "topojson", "feature": "states"}
+                        },
+                          "transform": [
+                            {
+                              "lookup": "id",
+                              "from": {
+                                "data": {"url": "data/democrat-lean.csv"},
+                                "key": "ID",
+                                "fields": ["RATE"]
+                              }
+                            }
+                          ],
+                        "projection": {"type": "albersUsa"},
+                        "mark": "geoshape",
+                        "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
                     }
-                  ],
-                "projection": {"type": "albersUsa"},
-                "mark": "geoshape",
-                "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
-            }
-            </script>
+                    </script>
+                </div>
+            </div>
+            <div id="vega-democrat-lean" class="tab-content">
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Democrat Lean</div>
+                    <script type="text/data">
+                    {
+                        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                        "data": {
+                            "url": "data/states2.json",
+                            "format": {"type": "topojson", "feature": "states"}
+                        },
+                          "transform": [
+                            {
+                              "lookup": "id",
+                              "from": {
+                                "data": {"url": "data/democrat-lean.csv"},
+                                "key": "ID",
+                                "fields": ["RATE"]
+                              }
+                            }
+                          ],
+                        "projection": {"type": "albersUsa"},
+                        "mark": "geoshape",
+                        "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
+                    }
+                    </script>
+                </div>
+            </div>
         </div>
     </li>
     <li>
@@ -2263,6 +2344,8 @@
             if (dataEl) {
                 code = dataEl.innerText;
                 data = JSON.parse(dataEl.innerText);
+                data.width = 800;
+                data.height = 600;
                 codeLanguage = 'json';
             }
             else if (dataScript) {
@@ -2293,6 +2376,27 @@
                 'javascript',
                 el.closest('div')
             );
+        }
+    );
+    document.querySelectorAll('div.tabs-container').forEach(
+        (el) => {
+            const tabs = el.querySelectorAll('ol.tabs li');
+
+            tabs.forEach(
+                (tab) => {
+                    tab.addEventListener(
+                        'click',
+                        function(e) {
+                            e.preventDefault();
+                            const target = tab.querySelector('a').getAttribute('href');
+                            el.querySelectorAll('.tab-content').forEach((tabContent) => tabContent.classList.remove('active'));
+                            el.querySelector(target).classList.add('active');
+                            tabs.forEach( (tab) => tab.classList.remove('active'))
+                            tab.classList.add('active');
+                        }
+                    )
+                }
+            )
         }
     );
 </script>
