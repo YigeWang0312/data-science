@@ -2,37 +2,51 @@
 body {
 	background-color:#1A1A1A;
 	color: #FFF;
-	font-size:14px;
-	font-family: Tahoma, serif;
+	font-size:23px;
+	font-family: "Times New Roman", serif;
 	text-align:center;
-  padding: 0.5em 3em;
+    padding: 0.5em 3em;
 }
 
 a {
     text-decoration: none;
     color: #FFF;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: Tahoma, Arial, sans-serif;
+}
 h1{
-	font-size:60px;
+	font-size:3em;
 }
 h2{
-	font-size:26px;
+	font-size:2em;
 }
 h3{
-	font-size:26px;
+	font-size:1.5em;
 }
 h4{
-	font-size:20px;
+	font-size:1.2em;
 }
 h5{
-	font-size:16px;
+	font-size:1.1em;
 }
 h6{
-	font-size:14px;
+	font-size:1.05em;
+}
+p{
+    line-height: 2;
 }
 ol{
-	list-style:none;
-	padding:0;
+	text-align:left;
+}
+p {
+    text-indent:2em;
+}
+main > ol {
+    list-style: none;
+}
+main > ol > li {
+    margin:3em 0;
 }
 nav {
 	display:flex;
@@ -147,7 +161,9 @@ table tr td:first-child {
 table td, table th  {
     text-align:center;
     border:1px solid #ddd;
+    padding:1em;
 }
+
 img.weather-icon {
     max-height:1.5em;
 }
@@ -175,4 +191,52 @@ main ol.project pre code {
     font-size:0.8em;
     margin:3em 2em;
     white-space: pre;
+}
+div.big-table {
+    overflow: scroll;
+}
+div.tabs-container {
+    margin-top:5em;
+}
+div.tabs-container ol.tabs {
+    list-style: none;
+    margin:0;
+    padding:0;
+    font-size:1.2em;
+    text-align:left;
+}
+div.tabs-container ol.tabs li  {
+    display:inline-block;
+    border-radius:5px 5px 0 0;
+    padding:0.5em;
+    border-width: 1px 1px 0 1px;
+}
+div.tabs-container ol.tabs li.active {
+    position:relative;
+    bottom:-1px;
+}
+div.tabs-container ol.tabs li a {
+    color: #fff;
+}
+div.tabs-container div.tab-content {
+    display:none;
+    padding:1em;
+    border-width: 1px;
+}
+div.tabs-container div.tab-content.active {
+    display:block;
+}
+div.tabs-container ol.tabs li {
+    background:#222;
+}
+/** Uniform background */
+div.tabs-container div.tab-content.active,
+div.tabs-container ol.tabs li.active  {
+    background-color:#333;
+}
+/* Uniform border */
+div.tabs-container ol.tabs li,
+div.tabs-container div.tab-content {
+    border-style:solid;
+    border-color:#222;
 }
