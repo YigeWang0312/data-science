@@ -123,3 +123,30 @@ table td, table th  {
 img.weather-icon {
     max-height:1.5em;
 }
+
+
+main ol.project div.vega-container {
+    display:inline-block;
+    width:49%;
+    text-align:center;
+}
+main ol.project div.vega-canvas + p,
+main ol.project table + p
+{
+    color:#888;
+}
+main ol.project pre {
+    display:block;
+    width:100%;
+    text-align:left;
+}
+main ol.project pre code {
+    display:block;
+    background:#dfdfdf;
+    border:1px solid #cfcfcf;
+    padding:0.5em 1em;
+    overflow:scroll;
+    font-size:0.8em;
+    margin:3em 2em;
+    white-space: pre;
+}

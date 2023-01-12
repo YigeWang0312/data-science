@@ -2,6 +2,7 @@
 <html lang="en-us">
 <meta charset="UTF-8">
 <link href="styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
 <style>
     table {
         max-width:100%;
@@ -23,7 +24,7 @@
 </nav>
 <main>
 <h1>Case Study/Project</h1>
-<ol>
+<ol class="project">
     <li>
         <h2>Introduction</h2>
         <p>
@@ -1693,6 +1694,36 @@
         </figure>
     </li>
     <li>
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <div class="vega-caption">Democrat Lean</div>
+            <script type="text/data">
+            {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "width": 600,
+                "height": 400,
+                "data": {
+                    "url": "data/states2.json",
+                    "format": {"type": "topojson", "feature": "states"}
+                },
+                  "transform": [
+                    {
+                      "lookup": "id",
+                      "from": {
+                        "data": {"url": "data/democrat-lean.csv"},
+                        "key": "ID",
+                        "fields": ["RATE"]
+                      }
+                    }
+                  ],
+                "projection": {"type": "albersUsa"},
+                "mark": "geoshape",
+                "encoding": {"color": {"field": "RATE", "type": "quantitative"}}
+            }
+            </script>
+        </div>
+    </li>
+    <li>
         <h2>Data Quality Commentary</h2>
         <p>
             Data on political affinity was gathered over the phone with few answer possibilities (Republican, Democrat, or neither). State-level sample sizes were sufficiently big, ranging between 300 and 3000+, even though the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be some attenuation biases from measurement errors. As a result, the estimations in this work should be regarded as cautious.
@@ -2214,5 +2245,56 @@
     </li>
 </ol>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script defer>
+    document.querySelectorAll('div.vega-container').forEach(
+        async function(el) {
+            const vegaDiv = el.querySelector('div.vega-canvas');
+            const dataFunction = vegaDiv.getAttribute('data-data-function');
+            const dataEl = el.querySelector('script[type="text/data"]');
+            const dataScript = el.querySelector('script[type="text/javascript-function"]');
+            let data;
+            let code;
+            let codeLanguage = 'javascript';
+            if (dataEl) {
+                code = dataEl.innerText;
+                data = JSON.parse(dataEl.innerText);
+                codeLanguage = 'json';
+            }
+            else if (dataScript) {
+                code = dataScript.innerText;
+                await eval(dataScript.innerText);
+            }
+            if (code) {
+                exposeCode(code, codeLanguage, el);
+            }
+
+            vegaEmbed(vegaDiv, data);
+        }
+    );
+
+
+    function exposeCode(code, language, parentEl) {
+        const firstLineWhiteSpace = code.match(/(?<=\n)\s+(?=\S)/m);
+        code = code.replaceAll(firstLineWhiteSpace[0],'');
+        const codeEl = document.createElement('pre');
+        codeEl.innerHTML = '<code>' + hljs.highlight(code, {language}).value + '</code>';
+        parentEl.appendChild(codeEl);
+    }
+
+    document.querySelectorAll('script.expose').forEach(
+        (el) => {
+            exposeCode(
+                el.innerText,
+                'javascript',
+                el.closest('div')
+            );
+        }
+    );
+</script>
 </body>
 </html>
