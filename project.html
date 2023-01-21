@@ -845,18 +845,6 @@
                 </tfoot>
             </table>
         </div>
-        <p>
-            Table X summarises state-level economic and sociodemographic data from the 2020–2021 censuses conducted by the CDC, US Census Bureau, FRED, and US Bureau for Labor Statistics. Due to missing data and measurement error effects between datasets, California, Hawaii, and New Hampshire have been left out. In addition to the proportion of a state's population completely immunised, statistics are divided into four primary groups:
-        </p>
-        <ol>
-            <li>Socio-economic status (average income, unemployment rate, percentage of people with a bachelor's degree or above, percentage of people with health insurance)</li>
-            <li>Ethnicity and race (share of White, Black, Indian, Hawaiian, Asian, Hispanic, and Non- Hispanic population)</li>
-            <li>Age (shares of population categorised by age) (shares of population grouped by age)</li>
-            <li>Political Alignment (percentage of the population firmly supporting the Democrats, Republicans, or neither)</li>
-        </ol>
-        <p>
-            An ongoing research effort by Pew Research employs telephone surveys to ask respondents their political affiliation among three options: Republican, Democrat, or no strong alignment. This project collects political data on an annual basis.
-        </p>
     </li>
     <li>
         <div class="tabs-container">
@@ -998,10 +986,7 @@
     <li>
         <h2>Methods</h2>
         <p>
-            We will use Ordinary Least Squares, with Fixed Effects to model the impact of various state characteristics on vaccination rates.
-        </p>
-        <p>
-            Before creating the model, irrelevant variables were eliminated using a variety of techniques. The variables that did not have a sufficient low (|r| 0.5) Pearson product correlation coefficient when connected with other variables were also removed. Models with the least amount of multicollinearity and the lowest variation inflation factor were chosen (VIF). Thus, factors such as the unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors.
+            Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. We used Ordinary Least Squares regressions, with state-level fixed effects version for robustness. Different models are summarised in Table 2 below:
         </p>
         <table>
             <tr>
