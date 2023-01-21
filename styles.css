@@ -128,19 +128,32 @@ main > ol.portfolio li > p {
 main > ol li div {
     font-size:1em;
 }
-main ol li.figures {
-    text-align:center;
+
+main ol li figure {
+    display:inline-block;
+    width:45%;
+    background:#444;
+    padding:1em 1.5em;
+    margin:1em;
+    border:1px solid #777;
+}
+main ol li figure img {
+    width:100%;
+    display:block;
+}
+main ol li figure figcaption {
+    display:block;
 }
 main ol li.figures figure {
     display:inline-block;
     width:45%;
-    background:#fff;
-    padding:2em 0;
-    margin:0;
 }
 main ol li.figures figure img {
-    width:100%;
 }
+main ol li.figures figure figcaption {
+
+}
+
 li.citations {
     font-size:0.8em;
 }
