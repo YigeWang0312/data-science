@@ -508,12 +508,122 @@
             <li><strong>Income Per Capita</strong>
                 <p>In models 1, 3, and 5 the significant positive coefficient on per capita income implies an increase of $1 should correspond to an expected increase in state vaccination coverage between 0.0003% and 0.0018%. The coefficient on income per capita in the FE models is negative in model 2, indicating that the fixed effects are mostly responsible for the variance in vaccination coverage and that the income per capita effects are weaker than first believed.</p>
 
-                <figure>
-                    <figcaption>
-                        Graph 1: Per Capita Income and Vaccination Coverage
-                    </figcaption>
-                    <img src="images/scatter-graph-income.png" alt="Graph 1: Per Capita Income and Vaccination Coverage" />
-                </figure>
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 1: Per Capita Income and Vaccination Coverage</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "A basic scatter plot example depicting automobile statistics.",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "income",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "income"},
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "vaxxed"},
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "repub"},
+                          "range": ["#0000ff", "#ff0000"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "Per Capita Income (2021 FRED)",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {"scale": "x", "field": "income"},
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.5},
+                              "size": { "value": 500 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"scale": "color", "field": "repub"},
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
             </li>
             <li><strong>Political Alignment</strong>
                 <p>All OLS models, along with most of the FE models, show positive and substantial coefficients for a state's Democratic alignment. The predicted increase in state vaccination coverage by 1% should be between 0.6% and 2.4% on average, depending on how strongly the Democratic Party is represented in the state's population. Similarly, when model 7 and model 9 are compared, the Republican alignment coefficient is shown to be substantial, negative, and numerically close to the Democratic alignment coefficient. According to model 9, a 1% rise in the number of strongly Republican state residents should cause the state's vaccination coverage to drop by an average of 0.56%.</p>
