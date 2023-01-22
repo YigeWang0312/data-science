@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <link href="styles.css" rel="stylesheet" />
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css">
 <body>
@@ -39,7 +40,9 @@
             <li>Age (shares of population categorised by age)</li>
             <li>Political Alignment (percentage of the population firmly supporting the Democrats, Republicans, or neither)</li>
         </ol>
-        <div>
+    </li>
+    <li class="table">
+        <div class="table">
             <table>
                 <thead>
                     <tr>
@@ -328,11 +331,12 @@
             Data on political affinity was gathered over the phone with few answer possibilities (Republican, Democrat, or neither). State-level sample sizes were sufficiently big, ranging between 300 and 3000+, even though the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be some attenuation biases from measurement errors. As a result, the estimations in this work should be regarded as cautious.
         </p>
     </li>
-    <li>
+    <li class="table">
         <h2>Methods</h2>
         <p>
             Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. We used Ordinary Least Squares regressions, with state-level fixed effects version for robustness. Different models are summarised in Table 2 below:
         </p>
+        <div class="table">
         <table>
             <thead>
             <tr>
@@ -384,112 +388,115 @@
             </tr>
             </tbody>
         </table>
+        </div>
     </li>
-    <li>
+    <li class="table">
         <h2>Model Results</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>VARIABLES</th>
-                <th>-1</th>
-                <th>-2</th>
-                <th>-3</th>
-                <th>-4</th>
-                <th>-5</th>
-                <th>-6</th>
-                <th>-7</th>
-                <th>-8</th>
-                <th>-9</th>
-                <th>-10</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Income</td><td>0.000339*** </td><td>-0.0009547</td><td>0.0018274**</td><td>0.0045983</td><td>0.0004008***</td><td>0.0006771*</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td>-9.61E-05</td><td>-0.0006483</td><td>-0.0006374</td><td>-0.0014637</td><td>-8.94E-05</td><td>-7.92E-05</td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Income ^2</td><td>-</td><td>-</td><td> -1.09e-08*</td><td>-3.21E-08</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td>-4.84E-09</td><td>-9.26E-09</td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Democrat</td><td>0.5954974***</td><td>1.602335</td><td> 2.414382*** </td><td>2.422399</td><td>0.7096269*** </td><td>0.9358065** </td><td>0.5918859***</td><td> 0.7188047*</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td>-0.1297388</td><td>-0.5788273</td><td>-0.310921</td><td>-1.266614</td><td>-0.1015969</td><td>-0.0224952</td><td>-0.0895951</td><td>-0.065091</td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Democrat^2</td><td>-</td><td>-</td><td> -0.0209493***</td><td>-0.0222024</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td>-0.0036477</td><td>-0.0183228</td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Republican</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-0.561159***</td><td>-0.6062844</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>-0.0990377</td><td>-0.110767</td>
-            </tr>
-            <tr>
-                <td>Black</td><td>-31.26037***</td><td>-114.7341</td><td>-37.10826**</td><td>35.56031</td><td>-30.65093***</td><td>41.00687** </td><td>-29.52473***</td><td>13.28143</td><td>-23.53764***</td><td>8.748332</td>
-            </tr>
-            <tr>
-                <td></td><td>-6.800775</td><td>-54.93911</td><td>-15.64079</td><td>-67.24619</td><td>-5.818826</td><td>-1.570517</td><td>-4.566139</td><td>-5.053949</td><td>-4.356314</td><td>-12.19962</td>
-            </tr>
-            <tr>
-                <td>Black^2</td><td>-</td><td>-</td><td>60.9079</td><td>-22.66758</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td>-38.34182</td><td>-236.0603</td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Age 0-34</td><td>-69.3686*</td><td>487.0256</td><td>-1316.784***</td><td>-2434.529</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td>-38.59497</td><td>-370.8751</td><td>-295.4562</td><td>-1355.262</td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Age 0-34^2</td><td>-</td><td>-</td><td>1406.426*** </td><td>2623.611</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td>-326.277</td><td>-1404.359</td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td>Age 19-34</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-125.452*** </td><td>-126.1284</td><td>-153.6228***</td><td>16.77131</td><td>-171.4477*** </td><td>-146.7112</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td><td></td><td>-37.83541</td><td>-39.55346</td><td>-35.47495</td><td>-38.94885</td><td>-34.62379</td><td>-50.22007</td>
-            </tr>
-            <tr>
-                <td>Education</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>0.7899942*** </td><td>0.6722387*</td><td>0.7995392***</td><td>0.8274084</td>
-            </tr>
-            <tr>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>-0.1259004</td><td>-0.1141864</td><td>-0.136419</td><td>-0.2219998</td>
-            </tr>
-            <tr>
-                <td>Constant</td><td> 50.29934**</td><td>-156.4554</td><td>238.3277***</td><td>403.6915</td><td>37.65037*** </td><td>9.062696</td><td>46.43367***</td><td>7.84944</td><td>96.80427***</td><td> 91.85099*</td>
-            </tr>
-            <tr>
-                <td></td><td>-18.06561</td><td>-144.1061</td><td>-64.9411</td><td>-263.7733</td><td>-6.219555</td><td>-5.444274</td><td>-6.798758</td><td>-7.993108</td><td>-8.793302</td><td>-11.55951</td>
-            </tr>
-            <tr>
-                <td>R-squared</td><td>0.7875</td><td>0.9979</td><td>0.8895</td><td>0.9998</td><td>0.8012</td><td>1</td><td>0.8578</td><td>1</td><td>0.8388</td><td>0.9997</td>
-            </tr>
-            <tr>
-                <td>Root MSE</td><td>4.1634</td><td>2.7415</td><td>3.1527</td><td>0.8034</td><td>4.0273</td><td>0.22877</td><td>3.4065</td><td>0.38958</td><td>3.6259</td><td>1.0697</td>
-            </tr>
-            <tr>
-                <td>RESET Test</td><td>0.0335</td><td>-</td><td>0.5941</td><td>-</td><td>0.2333</td><td>-</td><td>0.0749</td><td>-</td><td>0.0769</td><td>-</td>
-            </tr>
-            <tr>
-                <td>Mean VIF</td><td>1.72</td><td>14.3</td><td>169.5</td><td>698</td><td>1.66</td><td>7.89</td><td>1.81</td><td>6.7</td><td>1.78</td><td>5.17</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th>VARIABLES</th>
+                    <th>-1</th>
+                    <th>-2</th>
+                    <th>-3</th>
+                    <th>-4</th>
+                    <th>-5</th>
+                    <th>-6</th>
+                    <th>-7</th>
+                    <th>-8</th>
+                    <th>-9</th>
+                    <th>-10</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Income</td><td>0.000339*** </td><td>-0.0009547</td><td>0.0018274**</td><td>0.0045983</td><td>0.0004008***</td><td>0.0006771*</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td>-9.61E-05</td><td>-0.0006483</td><td>-0.0006374</td><td>-0.0014637</td><td>-8.94E-05</td><td>-7.92E-05</td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Income ^2</td><td>-</td><td>-</td><td> -1.09e-08*</td><td>-3.21E-08</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>-4.84E-09</td><td>-9.26E-09</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Democrat</td><td>0.5954974***</td><td>1.602335</td><td> 2.414382*** </td><td>2.422399</td><td>0.7096269*** </td><td>0.9358065** </td><td>0.5918859***</td><td> 0.7188047*</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td>-0.1297388</td><td>-0.5788273</td><td>-0.310921</td><td>-1.266614</td><td>-0.1015969</td><td>-0.0224952</td><td>-0.0895951</td><td>-0.065091</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Democrat^2</td><td>-</td><td>-</td><td> -0.0209493***</td><td>-0.0222024</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>-0.0036477</td><td>-0.0183228</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Republican</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-0.561159***</td><td>-0.6062844</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>-0.0990377</td><td>-0.110767</td>
+                </tr>
+                <tr>
+                    <td>Black</td><td>-31.26037***</td><td>-114.7341</td><td>-37.10826**</td><td>35.56031</td><td>-30.65093***</td><td>41.00687** </td><td>-29.52473***</td><td>13.28143</td><td>-23.53764***</td><td>8.748332</td>
+                </tr>
+                <tr>
+                    <td></td><td>-6.800775</td><td>-54.93911</td><td>-15.64079</td><td>-67.24619</td><td>-5.818826</td><td>-1.570517</td><td>-4.566139</td><td>-5.053949</td><td>-4.356314</td><td>-12.19962</td>
+                </tr>
+                <tr>
+                    <td>Black^2</td><td>-</td><td>-</td><td>60.9079</td><td>-22.66758</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>-38.34182</td><td>-236.0603</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Age 0-34</td><td>-69.3686*</td><td>487.0256</td><td>-1316.784***</td><td>-2434.529</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td>-38.59497</td><td>-370.8751</td><td>-295.4562</td><td>-1355.262</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Age 0-34^2</td><td>-</td><td>-</td><td>1406.426*** </td><td>2623.611</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>-326.277</td><td>-1404.359</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>Age 19-34</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-125.452*** </td><td>-126.1284</td><td>-153.6228***</td><td>16.77131</td><td>-171.4477*** </td><td>-146.7112</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td></td><td></td><td>-37.83541</td><td>-39.55346</td><td>-35.47495</td><td>-38.94885</td><td>-34.62379</td><td>-50.22007</td>
+                </tr>
+                <tr>
+                    <td>Education</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>0.7899942*** </td><td>0.6722387*</td><td>0.7995392***</td><td>0.8274084</td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>-0.1259004</td><td>-0.1141864</td><td>-0.136419</td><td>-0.2219998</td>
+                </tr>
+                <tr>
+                    <td>Constant</td><td> 50.29934**</td><td>-156.4554</td><td>238.3277***</td><td>403.6915</td><td>37.65037*** </td><td>9.062696</td><td>46.43367***</td><td>7.84944</td><td>96.80427***</td><td> 91.85099*</td>
+                </tr>
+                <tr>
+                    <td></td><td>-18.06561</td><td>-144.1061</td><td>-64.9411</td><td>-263.7733</td><td>-6.219555</td><td>-5.444274</td><td>-6.798758</td><td>-7.993108</td><td>-8.793302</td><td>-11.55951</td>
+                </tr>
+                <tr>
+                    <td>R-squared</td><td>0.7875</td><td>0.9979</td><td>0.8895</td><td>0.9998</td><td>0.8012</td><td>1</td><td>0.8578</td><td>1</td><td>0.8388</td><td>0.9997</td>
+                </tr>
+                <tr>
+                    <td>Root MSE</td><td>4.1634</td><td>2.7415</td><td>3.1527</td><td>0.8034</td><td>4.0273</td><td>0.22877</td><td>3.4065</td><td>0.38958</td><td>3.6259</td><td>1.0697</td>
+                </tr>
+                <tr>
+                    <td>RESET Test</td><td>0.0335</td><td>-</td><td>0.5941</td><td>-</td><td>0.2333</td><td>-</td><td>0.0749</td><td>-</td><td>0.0769</td><td>-</td>
+                </tr>
+                <tr>
+                    <td>Mean VIF</td><td>1.72</td><td>14.3</td><td>169.5</td><td>698</td><td>1.66</td><td>7.89</td><td>1.81</td><td>6.7</td><td>1.78</td><td>5.17</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <h3>IMPORTANT TABLE FOOTNOTE:</h3>
 
         <p>(Robust standard errors in parentheses, *** p < 0.01, ** p<0.05, * p<0.1)</p>
@@ -578,8 +585,10 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script defer>
+    let mapWidth;
     document.querySelectorAll('div.vega-container').forEach(
         async function(el) {
+            mapWidth = mapWidth ?? Math.min(800,el.clientWidth*0.84);
             const vegaDiv = el.querySelector('div.vega-canvas');
             const dataFunction = vegaDiv.getAttribute('data-data-function');
             const dataEl = el.querySelector('script[type="text/data"]');
@@ -590,8 +599,8 @@
             if (dataEl) {
                 code = dataEl.innerText;
                 data = JSON.parse(dataEl.innerText);
-                data.width = 800;
-                data.height = 600;
+                data.width = mapWidth;
+                data.height = data.width*(600/800);
                 codeLanguage = 'json';
             }
             else if (dataScript) {
