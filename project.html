@@ -600,8 +600,8 @@
                               "tooltip": {"field": "state"},
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
-                              "opacity": {"value": 0.5},
-                              "size": { "value": 500 },
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
                               "stroke": {"value": "#ffffff"},
                               "fill": {"scale": "color", "field": "repub"},
                               "labels": true
@@ -619,6 +619,26 @@
                               "stroke": {"value": "#88ff88"}
                             }
                           }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
                         }
                       ]
                     }
