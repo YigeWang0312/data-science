@@ -597,7 +597,9 @@
                             "update": {
                               "x": {"scale": "x", "field": "income"},
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Income: $' + format(datum.income,',.0f')"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
@@ -737,7 +739,9 @@
                             "update": {
                               "x": {"scale": "x", "field": "dem"},
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Lean: ' + format(datum.dem,',.0f') + '%'"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
@@ -874,7 +878,9 @@
                             "update": {
                               "x": {"scale": "x", "field": "repub"},
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Lean: ' + format(datum.repub,',.0f') + '%'"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
@@ -1018,7 +1024,9 @@
                             "update": {
                               "x": {"scale": "x", "field": "black"},
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Black: ' + format(datum.black*100,',.2f') + '%'"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
@@ -1166,7 +1174,9 @@
                                 "signal": "datum['below19'] + datum['19to25'] + datum['26to34']"
                               },
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Young: ' + format((datum['below19'] + datum['19to25'] + datum['26to34'])*100,',.2f') + '%'"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
@@ -1314,7 +1324,9 @@
                                 "field": "degree"
                               },
                               "y": {"scale": "y", "field": "vaxxed"},
-                              "tooltip": {"field": "state"},
+                              "tooltip": {
+                                "signal": "datum.state + '(' + datum.vaxxed +'%) Degree: ' + format(datum.degree,',.0f') + '%'"
+                              },
                               "shape": {"value": "circle"},
                               "strokeWidth": {"value": 2},
                               "opacity": {"value": 0.8},
