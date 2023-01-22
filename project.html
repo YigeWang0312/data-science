@@ -648,38 +648,719 @@
             <li><strong>Political Alignment</strong>
                 <p>All OLS models, along with most of the FE models, show positive and substantial coefficients for a state's Democratic alignment. The predicted increase in state vaccination coverage by 1% should be between 0.6% and 2.4% on average, depending on how strongly the Democratic Party is represented in the state's population. Similarly, when model 7 and model 9 are compared, the Republican alignment coefficient is shown to be substantial, negative, and numerically close to the Democratic alignment coefficient. According to model 9, a 1% rise in the number of strongly Republican state residents should cause the state's vaccination coverage to drop by an average of 0.56%.</p>
 
-                <figure>
-                    <figcaption>Graph 2: Democratic Voters and Vaccination Coverage</figcaption>
-                    <img src="images/scatter-graph-democrat.png" alt="Graph 2: Democratic Voters and Vaccination Coverage" />
-                </figure>
-                <figure>
-                    <figcaption>Graph 3: Republican Voters and Vaccination Coverage</figcaption>
-                    <img src="images/scatter-graph-republican.png" alt="Graph 3: Republican Voters and Vaccination Coverage" />
-                </figure>
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 2: Democratic Voters and Vaccination Coverage</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "Democratic Voters and Vaccination Coverage",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "dem",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "dem"},
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "vaxxed"},
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "white"},
+                          "range": ["#5C4033", "#ffffff"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "% Democrat Lean",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {"scale": "x", "field": "dem"},
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"scale": "color", "field": "white"},
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
+
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 3: Republican Voters and Vaccination Coverage</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "Republican Voters and Vaccination Coverage",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "repub",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "repub"},
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "vaxxed"},
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "white"},
+                          "range": ["#5C4033", "#ffffff"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "% Republican Lean",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {"scale": "x", "field": "repub"},
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"scale": "color", "field": "white"},
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
             </li>
             <li><strong>Black Population</strong>
                 <p>In all OLS models, the coefficient on the Black population is negative and substantial. Therefore, a 1% increase in a state's share of black people should result in a projected fall in the state's vaccination coverage of between 0.24% and 0.37%. In FE models, it is less significant and occasionally even positive, indicating that the state level fixed effects are mostly responsible for the fluctuation.</p>
-
-                <figure>
-                    <figcaption>Graph 4: Black Population Density  and Vaccination Coverage</figcaption>
-                    <img src="images/scatter-graph-black.png" alt="Graph 4: Black Population Density  and Vaccination Coverage" />
-                </figure>
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 4: Black Population Density  and Vaccination Coverag</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "Black Population Density  and Vaccination Coverag",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "black",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "black"},
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "vaxxed"},
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "repub"},
+                          "range": ["#0000ff", "#ff0000"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "% Black Population",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22,
+                          "encode":{
+                              "labels": {
+                                  "update":{ "text": { "signal": "floor(datum.value*100)"} }
+                              }
+                           }
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {"scale": "x", "field": "black"},
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"value": "#aaaaaa" },
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
             </li>
             <li><strong>Young Population</strong>
                 <p>In its OLS models, the age coefficient for the larger 0 to 34 age range is substantial and negative. In contrast, the coefficient for the narrower age variable of 19 to 34 is also negative and significant within its OLS models, meaning that an expected decrease in state vaccination coverage of between 1.25% and 1.71% should result from a 1% increase in the proportion of the population in a state aged between 19 and 34. Although both variables' coefficients are still negative in all except 2 and 8 FE models, they are not significant.</p>
 
-                <figure>
-                    <figcaption>Graph 5: Young Population (0-34) and Vaccination Coverage</figcaption>
-                    <img src="images/scatter-graph-young.png" alt="Graph 5: Young Population (0-34) and Vaccination Coverage" />
-                </figure>
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 5: Young Population (0-34) and Vaccination Coverage</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "Young Population (0-34) and Vaccination Coverage",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "_0to34",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": [ 0.35, 0.55 ],
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "vaxxed"},
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "repub"},
+                          "range": ["#0000ff", "#ff0000"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "% 0-34 Population",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22,
+                          "encode":{
+                              "labels": {
+                                  "update":{ "text": { "signal": "floor(datum.value*100)"} }
+                              }
+                           }
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {
+                                "scale": "x",
+                                "signal": "datum['below19'] + datum['19to25'] + datum['26to34']"
+                              },
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"scale": "color", "field": "repub"},
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
             </li>
             <li><strong>Education Level</strong>
                 <p>Finally, a 1% rise in the percentage of a state's population with a bachelor's degree or more should result in an average increase in state vaccination coverage of between 0.67% and 0.79%, according to OLS models and FE model 8 where the coefficient on education is positive and substantial. Most of these state-level findings concur with individual-level findings from the highlighted logistic models in Section 2.</p>
 
-                <figure>
-                    <figcaption>Graph 6: Education Level  and Vaccination Coverage</figcaption>
-                    <img src="images/scatter-graph-education.png" alt="Graph 6: Education Level  and Vaccination Coverage" />
-                </figure>
+                <div class="vega-container">
+                    <div class="vega-canvas"></div>
+                    <div class="vega-caption">Graph 6: Education Level  and Vaccination Coverage</div>
+                    <script type="text/data">
+                    {
+                      "$schema": "https://vega.github.io/schema/vega/v5.json",
+                      "description": "Education Level  and Vaccination Coverage",
+                      "padding": 15,
+                      "background": "#333333",
+                      "data": [
+                        {
+                          "name": "source",
+                          "url": "data/states-data.json"
+                        },
+                        {
+                          "name": "fit",
+                          "source": "source",
+                          "transform": [
+                            {
+                              "type": "regression",
+                              "method": "linear",
+                              "x": "degree",
+                              "y": "vaxxed",
+                              "as": ["u", "v"]
+                            }
+                          ]
+                        }
+                      ],
+                      "scales": [
+                        {
+                          "name": "x",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": {"data": "source", "field": "degree"},
+                          "range": "width"
+                        },
+                        {
+                          "name": "y",
+                          "type": "linear",
+                          "round": true,
+                          "nice": true,
+                          "zero": false,
+                          "domain": [45,85],
+                          "range": "height"
+                        },
+                        {
+                          "name": "color",
+                          "type": "linear",
+                          "domain": {"data": "source", "field": "repub"},
+                          "range": ["#0000ff", "#ff0000"]
+                        }
+                      ],
+                      "axes": [
+                        {
+                          "scale": "x",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "bottom",
+                          "tickCount": 5,
+                          "title": "% with Bachelors or Higher",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22,
+                          "encode":{
+                              "labels": {
+                                  "update":{ "text": { "signal": "floor(datum.value)"} }
+                              }
+                           }
+                        },
+                        {
+                          "scale": "y",
+                          "grid": true,
+                          "domain": false,
+                          "orient": "left",
+                          "titlePadding": 5,
+                          "title": "% Vaxxed",
+                          "labelColor": "#ffffff",
+                          "labelFontSize": "17",
+                          "titleColor": "#ffffff",
+                          "titleFontSize": 22
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "name": "marks",
+                          "type": "symbol",
+                          "from": {"data": "source"},
+                          "encode": {
+                            "update": {
+                              "x": {
+                                "scale": "x",
+                                "field": "degree"
+                              },
+                              "y": {"scale": "y", "field": "vaxxed"},
+                              "tooltip": {"field": "state"},
+                              "shape": {"value": "circle"},
+                              "strokeWidth": {"value": 2},
+                              "opacity": {"value": 0.8},
+                              "size": { "value": 600 },
+                              "stroke": {"value": "#ffffff"},
+                              "fill": {"scale": "color", "field": "repub"},
+                              "labels": true
+                            }
+                          }
+                        },
+                        {
+                          "name": "trend",
+                          "type": "line",
+                          "from": {"data": "fit"},
+                          "encode": {
+                            "enter": {
+                              "x": {"scale": "x", "field": "u"},
+                              "y": {"scale": "y", "field": "v"},
+                              "stroke": {"value": "#88ff88"}
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "from": {"data": "marks"},
+                          "encode": {
+                            "enter": {
+                              "text": {"field": "datum.state"},
+                              "fontSize": {"value": 15},
+                              "fill": {"value": "#999999"}
+                            }
+                          },
+                          "transform": [
+                            {
+                              "type": "label",
+                              "avoidMarks": ["trend"],
+                              "anchor": [ "bottom", "right", "left"],
+                              "offset": [1],
+                              "size": {"signal": "[width + 60, height]"}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    </script>
+                </div>
             </li>
         </ol>
     </li>
