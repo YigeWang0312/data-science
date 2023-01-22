@@ -22,12 +22,17 @@ ol.project table thead tr:first-child th
     font-family: Tahoma, Arial, sans-serif;
     font-weight:bold;
 }
-h1{
-	font-size:0.8em;
-    font-weight:normal;
-    margin:5em 8em;
+h1 {
+	font-size:1.2em;
     text-align: justify;
+    margin:1em;
+}
+main.project h1 {
+    font-size:0.8em;
+    font-size:0.8em;
+    margin:5em 8em;
     font-style: italic;
+    font-weight:normal;
 }
 h2{
 	font-size:1.15em;
@@ -69,7 +74,6 @@ nav {
 nav .site-title{
 	width:30%;
 	text-align:left;
-	line-height:0;
 }
 @media only screen and (max-width: 717px) {
   nav .site-title {
@@ -83,6 +87,7 @@ nav .site-title{
 nav .site-title p{
 	color:#6377EE;
 	font-weight:600;
+    font-size:0.60em;
 }
 nav .nav-menu{
 	width:70%;
@@ -158,6 +163,9 @@ main ol li.figures figure img {
 }
 main ol li.figures figure figcaption {
 
+}
+main ol li div.undersized-image img {
+    width:100%;
 }
 
 li.citations {
@@ -306,13 +314,13 @@ ol.project table th a.source {
     font-size:0.7em;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1200px) {
     body {
         padding:0;
         margin:0;
         font-size:16px;
     }
-    main h1 {
+    main.project h1 {
         margin-left:3em;
         margin-right:3em;
     }
@@ -361,11 +369,13 @@ ol.project table th a.source {
         padding: 0 0.2em;
     }
     nav .nav-menu {
+        display:block;
         border-width:0;
         background:transparent;
         width:auto;
     }
     nav .nav-menu a {
+        display:block;
         margin:0;
         padding:0;
     }
@@ -392,5 +402,11 @@ ol.project table th a.source {
         padding-top:0.6em;
         padding-bottom:0.6em;
 
+    }
+    main > ol.portfolio > li {
+        display:block;
+    }
+    main > ol.portfolio > li.half {
+        width:auto;
     }
 }
