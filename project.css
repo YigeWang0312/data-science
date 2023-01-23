@@ -1,0 +1,24 @@
+body#project {
+  padding: 0;
+  margin: 0; }
+  body#project h1 {
+    margin: 2em; }
+  body#project ol.project {
+    margin: 0;
+    padding: 0; }
+  body#project ol.project > li {
+    padding: 1em 5em 2em;
+    border-bottom: 1px solid #555;
+    margin: 0; }
+    body#project ol.project > li.highlight {
+      background-color: #212A65; }
+      body#project ol.project > li.highlight table {
+        border-color: #333; }
+        body#project ol.project > li.highlight table th, body#project ol.project > li.highlight table td {
+          border-color: #999; }
+      body#project ol.project > li.highlight table tr td:first-child,
+      body#project ol.project > li.highlight table thead tr:first-child {
+        background-color: #975138;
+        color: #fff; }
+
+/*# sourceMappingURL=project.css.map */

@@ -24,8 +24,8 @@ ol.project table thead tr:first-child th
 }
 h1 {
 	font-size:1.2em;
-    text-align: justify;
-    margin:1em;
+    text-align: center;
+    margin:5em 0 2em;
 }
 main.project h1.long-title {
     font-size:0.8em;

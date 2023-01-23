@@ -1,0 +1,34 @@
+
+body#project {
+    padding:0;
+    margin:0;
+    h1 {
+        margin:2em;
+    }
+    ol.project {
+        margin:0;
+        padding:0;
+    }
+    ol.project > li {
+        padding:1em 5em 2em;
+        border-bottom:1px solid #555;
+        margin:0;
+        &.highlight {
+            background-color:#212A65;
+
+            table {
+                border-color:#333;
+                th, td {
+                    border-color:#999;
+                }
+            }
+            table tr td:first-child,
+            table thead tr:first-child
+            {
+                background-color:#975138;
+                color:#fff;
+            }
+        }
+    }
+}
+
