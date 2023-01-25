@@ -15,7 +15,6 @@ body#project {
         margin:0;
         &.highlight {
             background-color:#212A65;
-
             table {
                 border-color:#333;
                 th, td {
@@ -27,6 +26,42 @@ body#project {
             {
                 background-color:#975138;
                 color:#fff;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1200px) {
+    body#project {
+        h1 {
+        }
+        ol.project {
+        }
+        ol.project > li {
+            padding-left:1em;
+            padding-right:1em;
+            &.table {
+                padding-left:0.25em;
+                padding-right:0.25em;
+                padding-top:0.5em;
+                padding-bottom:0.5em;
+                border-top:3px solid #777;
+                border-bottom:3px solid #777;
+            }
+            &.highlight {
+                div.table.highlight {
+                    padding-top:0.5em;
+                    padding-bottom:0.5em;
+                    background-color:#111A55;
+                }
+                table {
+                    th, td {
+
+                    }
+                }
+                table tr td:first-child,
+                table thead tr:first-child
+                {
+                }
             }
         }
     }

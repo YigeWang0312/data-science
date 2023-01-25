@@ -21,4 +21,20 @@ body#project {
         background-color: #975138;
         color: #fff; }
 
+@media only screen and (max-width: 1200px) {
+  body#project ol.project > li {
+    padding-left: 1em;
+    padding-right: 1em; }
+    body#project ol.project > li.table {
+      padding-left: 0.25em;
+      padding-right: 0.25em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      border-top: 3px solid #777;
+      border-bottom: 3px solid #777; }
+    body#project ol.project > li.highlight div.table.highlight {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      background-color: #111A55; } }
+
 /*# sourceMappingURL=project.css.map */
