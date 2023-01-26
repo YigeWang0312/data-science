@@ -1,12 +1,33 @@
 body#portfolio {
+  padding:0;
+  margin:0;
   main > ol {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
     padding:0;
     margin:0;
     & > li {
+      display:block;
       margin:0;
-      width:auto;
-      &:nth-child(even) {
+      width:100%;
+      border-top:0;
+      border-bottom:0;
+      &:nth-child(even):not(.half) {
         background-color:#222;
+      }
+      &#week1, &#week2,
+      &.half {
+        display:inline-block;
+        width:43%;
+        border-right:1px solid #000;
+        margin-top:2em;
+        margin-bottom:2em;
+        border-radius:30px;
+        & + .half {
+          border-right-width:0;
+        }
       }
       table {
         caption {
