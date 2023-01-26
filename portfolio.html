@@ -146,27 +146,59 @@
         <p>Embed two charts of your own design: (a) from a given API, (b) from the same/related
             data saved to your GitHub.</p>
         <div>
-            <div class="chartJs">
-                <canvas></canvas>
+            <div class="vega-container">
+                <div class="vega-caption">IMF Outstanding Credit</div>
+                <div class="vega-canvas"></div>
                 <script type="text/data">
-                    {
-                        "type": "bar",
-                        "data": {
-                          "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                          "datasets": [{
-                            "label": "# of Votes",
-                            "data": [12, 19, 3, 5, 2, 3],
-                            "borderWidth": 1
-                          }]
-                        },
-                        "options": {
-                          "scales": {
-                            "y": {
-                              "beginAtZero": true
-                            }
-                          }
-                        }
-                    }
+                {
+                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                   "background": "#333333",
+                   "title":{
+                      "text":"IMF Outstanding Credit",
+                      "subtitle":"in SDRs from 1984 - 2022 in billions Source: IMF",
+                      "subtitleFontSize":8,
+                      "subtitleColor":"#ffffff",
+                      "anchor":"start",
+                      "color":"#ffffff"
+                   },
+                   "data":{
+                      "url":"data/extcred1.csv"
+                   },
+                   "transform":[
+                      {
+                         "calculate":"datum.total/1000000000",
+                         "as":"billions"
+                      }
+                   ],
+                   "mark":{
+                      "type":"bar",
+                      "color": "#616AA5"
+                   },
+                   "encoding":{
+                      "x":{
+                         "field":"year",
+                         "type":"temporal",
+                         "axis":{
+                            "title":"Year",
+                            "grid":false,
+                            "ticks":false,
+                            "labelAngle":30,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "y":{
+                         "field":"billions",
+                         "type":"quantitative",
+                         "title":"Outstanding Credit(billion $)",
+                         "axis":{
+                            "grid":false,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      }
+                   }
+                }
                 </script>
             </div>
         </div>
