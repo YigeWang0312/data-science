@@ -17,6 +17,7 @@ body#portfolio {
       body#portfolio main > ol > li:nth-child(even):not(.half) {
         background-color: #222; }
       body#portfolio main > ol > li#week1, body#portfolio main > ol > li#week2, body#portfolio main > ol > li#week3-1, body#portfolio main > ol > li#week3-2, body#portfolio main > ol > li.half {
+        background: #333;
         display: inline-block;
         width: 43%;
         border-right: 1px solid #000;
