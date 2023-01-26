@@ -17,7 +17,8 @@ body#portfolio {
       &:nth-child(even):not(.half) {
         background-color:#222;
       }
-      &#week1, &#week2,
+      &#week1,
+      &#week2,
       &.half {
         display:inline-block;
         width:43%;
