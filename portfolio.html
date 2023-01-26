@@ -141,10 +141,8 @@
             </div>
         </div>
     </li>
-    <li id="week3">
+    <li id="week3-1">
         <h2>Week3: Hosting data</h2>
-        <p>Embed two charts of your own design: (a) from a given API, (b) from the same/related
-            data saved to your GitHub.</p>
         <div>
             <div class="vega-container">
                 <div class="vega-caption">IMF Outstanding Credit</div>
@@ -201,6 +199,58 @@
                 }
                 </script>
             </div>
+        </div>
+    </li>
+    <li id="week3-2">
+        <h2>Week3: Hosting data</h2>
+        <div class="vega-container">
+            <div class="vega-caption">IMF Outstanding Credit vs World GDP</div>
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+                {
+                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                   "background": "#333333",
+                   "title":{
+                      "text":"IMF Outstanding Credit vs World GDP",
+                      "subtitle":"1984-2021. Source: IMF & World Bank",
+                      "subtitleFontSize":8,
+                      "subtitleColor":"#ffffff",
+                      "anchor":"start",
+                      "color":"#ffffff"
+                   },
+                   "data":{
+                      "url":"data/creditgdp.csv"
+                   },
+                   "mark":{
+                      "type":"bar",
+                      "color": "#616AA5"
+                   },
+                   "encoding":{
+                      "x":{
+                         "field":"year",
+                         "type":"temporal",
+                         "axis":{
+                            "title":"Year",
+                            "grid":false,
+                            "ticks":false,
+                            "labelAngle":30,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "y":{
+                         "field":"percentage",
+                         "type":"quantitative",
+                         "title":"Outstanding Credit vs % world GDP",
+                         "axis":{
+                            "grid":false,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      }
+                   }
+                }
+                </script>
         </div>
     </li>
     <li>
