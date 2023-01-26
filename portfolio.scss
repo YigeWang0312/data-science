@@ -1,0 +1,30 @@
+body#portfolio {
+  main > ol {
+    padding:0;
+    margin:0;
+    & > li {
+      margin:0;
+      width:auto;
+      &:nth-child(even) {
+        background-color:#222;
+      }
+      table {
+        caption {
+          background:#444;
+        }
+        border:1px solid #444;
+        th {
+          background:#3a3a3a;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  body#portfolio {
+    main > ol {
+
+    }
+  }
+}
