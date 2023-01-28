@@ -11,7 +11,7 @@ main {
 
 a {
   text-decoration: none;
-  color: #FFF; }
+  color: #975138; }
 
 h1, h2, h3, h4, h5, h6,
 ol.project table tr td:first-child,
@@ -134,11 +134,15 @@ main > ol.portfolio li > p {
 main > ol li div {
   font-size: 1em; }
 
-main ol li figure:not(:only-child) {
+main ol li figure {
   background: #444;
   padding: 1em 1.5em;
   margin: 1em;
   border: 1px solid #777; }
+
+main ol li figure a.source {
+  font-size: 0.7em;
+  font-weight: bold; }
 
 main ol li figure img {
   width: 100%;
