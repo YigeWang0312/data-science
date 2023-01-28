@@ -26,7 +26,7 @@ body#portfolio {
         border-radius: 30px; }
         body#portfolio main > ol > li#week1 + .half, body#portfolio main > ol > li#week2 + .half, body#portfolio main > ol > li#week3-1 + .half, body#portfolio main > ol > li#week3-2 + .half, body#portfolio main > ol > li.half + .half {
           border-right-width: 0; }
-      body#portfolio main > ol > li.figures {
+      body#portfolio main > ol > li.figure {
         text-align: center; }
       body#portfolio main > ol > li table {
         border: 1px solid #444; }

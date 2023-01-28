@@ -134,9 +134,7 @@ main > ol.portfolio li > p {
 main > ol li div {
   font-size: 1em; }
 
-main ol li figure {
-  display: inline-block;
-  width: 45%;
+main ol li figure:not(:only-child) {
   background: #444;
   padding: 1em 1.5em;
   margin: 1em;
