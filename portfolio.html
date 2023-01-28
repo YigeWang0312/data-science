@@ -253,51 +253,15 @@
                 </script>
         </div>
     </li>
-    <li>
-        <h2>Week4: Editing data, writing JSON by hand</h2>
-        <p>Two more charts. One where you change the data (add an
-            observation, add a series, create a new series); One where the data is “in-line” JSON that you write. This
-            second chart need only have 5 or so observations.</p>
-        <div>
-            <div>
-                <div class="chartJs">
-                    <canvas></canvas>
-                    <script type="text/data">
-                    {
-                        "type": "pie",
-                        "data": {
-                          "labels": ["Male", "Female"],
-                          "datasets": [{
-                            "label": "# of Students Cpe",
-                            "data": [70,30],
-                            "borderWidth": 1
-                          }]
-                        },
-                        "options": {
-                        }
-                    }
-                    </script>
-                </div>
-
-                <div class="chartJs">
-                    <canvas></canvas>
-                    <script type="text/data">
-                    {
-                        "type": "pie",
-                        "data": {
-                          "labels": ["Male", "Female"],
-                          "datasets": [{
-                            "label": "# of Students Nursing",
-                            "data": [30,70],
-                            "borderWidth": 1
-                          }]
-                        },
-                        "options": {
-                        }
-                    }
-                    </script>
-                </div>
-            </div>
+    <li class="half figures">
+        <h2>Week4: Loops and APIs</h2>
+        <p>Created this pie chart using Colab, from OWID covid data</p>
+        <div class="undersized-image">
+            <img src="images/pie-chart-from-colab.png" alt="pire chart"/>
+            <a href="https://colab.research.google.com/drive/1YvwpI5Exj16IWXT2e4pKIyUGiSw3IuyV?usp=sharing">
+                # of hospitalizations per country
+                (See in Colab)
+            </a>
         </div>
     </li>
     <li class="half">
@@ -349,15 +313,6 @@
                     })();
                 </script>
             </div>
-        </div>
-    </li>
-    <li class="half">
-        <h2>Week6: Loops and APIs</h2>
-        <a href="https://colab.research.google.com/drive/1sWLNa1dzivX0HeaxJY4HqkW5XD9xEgNr#scrollTo=eJFbKDoqkBhH">Colab Scraper</a>
-        <h2>Week7: Loops and scrapers</h2>
-        <p>Build a scraper in Colab, save and chart the results.</p>
-        <div class="undersized-image">
-            <img src="images/pie-chart-from-colab.png" />
         </div>
     </li>
     <li>
