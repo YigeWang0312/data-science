@@ -39,8 +39,8 @@ document.querySelectorAll('div.vega-container').forEach(
 
 
 function exposeCode(code, language, parentEl) {
-    const firstLineWhiteSpace = code.match(/(?<=\n)\s+(?=\S)/m);
-    code = code.replaceAll(firstLineWhiteSpace[0],'');
+    const firstLineWhiteSpace = code.match(/(\n)(\s+)(\S)/m);
+    code = code.replaceAll(firstLineWhiteSpace[2],'');
     const codeEl = document.createElement('pre');
     codeEl.innerHTML = '<code>' + hljs.highlight(code, {language}).value + '</code>';
     parentEl.appendChild(codeEl);
