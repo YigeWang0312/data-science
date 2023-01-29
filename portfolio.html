@@ -509,6 +509,132 @@
                     }
                     </script>
             </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "data": {
+                          "name": "source",
+                          "url":"data/week5/ikbb_pnbp.json",
+                          "format": {"type": "json", "property": "years"}
+                       },
+                       "title":{
+                          "text": "Trade in Services (TS): WW: Exports: BOP: CP: SA",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "mark":{
+                          "type":"line",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0 && datum.year >= 2015 "
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "source":"data",
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "source":"data",
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domain": {"data": "source", "field": "value"}
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
+                        }
+                    }
+                    </script>
+            </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "data": {
+                          "name": "source",
+                          "url":"data/week5/ikbc_pnbp.json",
+                          "format": {"type": "json", "property": "years"}
+                       },
+                       "title":{
+                          "text": "Trade in Services (TS): WW: Imports: BOP: CP: SA",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "mark":{
+                          "type":"line",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0 && datum.year >= 2015 "
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "source":"data",
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "source":"data",
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domain": {"data": "source", "field": "value"}
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
+                        }
+                    }
+                    </script>
+            </div>
         </div>
     </li>
     <li>
