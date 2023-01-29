@@ -763,6 +763,68 @@
                     }
                     </script>
             </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "data": {
+                          "name": "source",
+                          "url":"data/week5/l55o_mm23.json",
+                          "format": {"type": "json", "property": "quarters"}
+                       },
+                       "title":{
+                          "text": "CPIH ANNUAL RATE 00: ALL ITEMS 2015=100",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "mark":{
+                          "type":"line",
+                          "point": true,
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "true && datum.year >= 2015"
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":false,
+                                "labelAngle":90,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title":"% Inflation",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domain": {"data": "source", "field": "value"}
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
+                        }
+                    }
+                    </script>
+            </div>
         </div>
     </li>
     <li>
