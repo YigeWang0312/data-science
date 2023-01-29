@@ -388,6 +388,66 @@
                 }
                 </script>
         </div>
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+                {
+                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                   "background": "#333333",
+                   "title":{
+                      "text":"Trade in Goods (T): WW: Exports: BOP: CP: SA",
+                      "subtitleColor":"#ffffff",
+                      "anchor":"start",
+                      "color":"#ffffff"
+                   },
+                   "data":{
+                      "url":"data/week5/bokg_pnbp.json",
+                      "format": {"type": "json", "property": "years"}
+                   },
+                   "mark":{
+                      "type":"line",
+                      "color": "#616AA5",
+                      "width": {"band":0.4}
+                   },
+                   "transform": [
+                        {
+                          "filter": "datum.value > 0 && datum.year >= 2015 "
+                        }
+                    ],
+                    "encoding": {
+                      "x": {
+                        "field": "label",
+                        "type": "ordinal",
+                         "axis":{
+                            "title":"Year",
+                            "grid":false,
+                            "ticks":2,
+                            "labelAngle":30,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "y": {
+                        "field": "value",
+                        "type": "quantitative",
+                         "axis":{
+                            "title": "£m",
+                            "grid":false,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         },
+                         "scale": {
+                            "domain": [250000,400000]
+                         }
+                      },
+                      "tooltip": [
+                        {"field":"label"},
+                        {"field":"value"}
+                      ]
+                    }
+                }
+                </script>
+        </div>
     </li>
     <li>
         <h2>Week8: Merging data</h2>
