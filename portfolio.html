@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link href="styles.css" rel="stylesheet" />
     <link href="portfolio.css" rel="stylesheet" />
@@ -268,54 +269,124 @@
         </div>
     </li>
     <li class="half">
-        <h2>Week5: API driven charts</h2>
-        <p>Embed two charts of your own design from two separate APIs that you sign up for &
-            gain access to.</p>
-        <div>
-            <div class="chartJs">
-                <h3>Crypto Portfolio $ Value</h3>
-                <canvas></canvas>
-                <p>This chart fetches the price from Binance API</p>
-                <script type="text/javascript-function">
-                    async function getCryptoPrice(crypto) {
-                        json = await  fetch('https://api.binance.com/api/v3/ticker/price?symbol=' + crypto + 'USDT')
-                            .then((r) => r.json());
-                        return json.price;
+        <h2>Week5: 9 Graphs from ONS</h2>
+
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+                {
+                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                   "background": "#333333",
+                   "title":{
+                      "text":"CG: Covid Corp Finance Facility: Commercial Paper: £m: NSA",
+                      "subtitleFontSize":8,
+                      "subtitleColor":"#ffffff",
+                      "anchor":"start",
+                      "color":"#ffffff"
+                   },
+                   "data":{
+                      "url":"data/week5/fsx6_pusf.json",
+                      "format": {"type": "json", "property": "years"}
+                   },
+                   "mark":{
+                      "type":"bar",
+                      "color": "#616AA5",
+                      "width": {"band":0.4}
+                   },
+                   "transform": [
+                        {
+                          "filter": "datum.value > 0"
+                        }
+                    ],
+                    "encoding": {
+                      "x": {
+                        "field": "label",
+                        "type": "ordinal",
+                         "axis":{
+                            "title":"Year",
+                            "grid":false,
+                            "ticks":2,
+                            "labelAngle":30,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "y": {
+                        "field": "value",
+                        "type": "quantitative",
+                         "axis":{
+                            "title": "£m",
+                            "grid":false,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "tooltip": [
+                        {"field":"label"},
+                        {"field":"value"}
+                      ]
                     }
-                    ( async () => {
-                        let cryptoQty = {
-                            "BTC": 1.56,
-                            "ETH": 8.12,
-                            "XRP": 32234.82
-                        };
-
-                        let labels = [];
-
-                        for (const [crypto, qty] of Object.entries(cryptoQty)) {
-                            labels.push(qty + " " + crypto);
-                        }
-                        let cryptoData = [];
-                        for (const [crypto, qty] of Object.entries(cryptoQty)) {
-                            let price = await  getCryptoPrice(crypto)*qty;
-                            cryptoData.push(price);
-                        }
-                        data = {
-                            "type": "pie",
-                            "data": {
-                              labels,
-                              "datasets": [{
-                                "label": "Crypto Value",
-                                data: cryptoData,
-                                "borderWidth": 1
-                              }]
-                            },
-                            "options": {
-                            }
-                        };
-                        return data;
-                    })();
+                }
                 </script>
-            </div>
+        </div>
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+                {
+                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                   "background": "#333333",
+                   "title":{
+                      "text":"CG: Covid Corp Finance Facility: Net cash requirement: £m: NSA",
+                      "subtitleColor":"#ffffff",
+                      "anchor":"start",
+                      "color":"#ffffff"
+                   },
+                   "data":{
+                      "url":"data/week5/fsx7_pusf.json",
+                      "format": {"type": "json", "property": "months"}
+                   },
+                   "mark":{
+                      "type":"bar",
+                      "color": "#616AA5",
+                      "width": {"band":0.4}                   },
+                   "transform": [
+                        {
+                          "filter": "datum.value > 0"
+                        }
+                    ],
+                    "encoding": {
+                      "x": {
+                        "field": "label",
+                        "type": "ordinal",
+                         "axis":{
+                            "title":"Month",
+                            "grid":false,
+                            "ticks":2,
+                            "labelAngle":30,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         }
+                      },
+                      "y": {
+                        "field": "value",
+                        "type": "quantitative",
+                         "axis":{
+                            "title": "£m",
+                            "grid":false,
+                            "labelColor":"#ffffff",
+                            "titleColor":"#ffffff"
+                         },
+                         "scale": {
+                            "domain": [0, 17000]
+                         }
+                      },
+                      "tooltip": [
+                        {"field":"label"},
+                        {"field":"value"}
+                      ]
+                    }
+                }
+                </script>
         </div>
     </li>
     <li>
