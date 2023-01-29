@@ -34,5 +34,13 @@ body#portfolio {
           background: #444; }
         body#portfolio main > ol > li table th {
           background: #3a3a3a; }
+      body#portfolio main > ol > li#week5 {
+        text-align: center; }
+        body#portfolio main > ol > li#week5 div.vega-containers {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap; }
+          body#portfolio main > ol > li#week5 div.vega-containers div.vega-container {
+            display: inline-block; }
 
 /*# sourceMappingURL=portfolio.css.map */

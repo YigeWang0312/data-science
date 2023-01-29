@@ -45,6 +45,17 @@ body#portfolio {
           background:#3a3a3a;
         }
       }
+      &#week5 {
+        text-align:center;
+        div.vega-containers {
+          display:flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          div.vega-container {
+            display:inline-block;
+          }
+        }
+      }
     }
   }
 }

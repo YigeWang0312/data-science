@@ -254,7 +254,7 @@
                 </script>
         </div>
     </li>
-    <li class="half figure">
+    <li class="figure">
         <h2>Week4</h2>
         <p>Created this pie chart using Colab, from OWID covid data</p>
         <div class="undersized-image">
@@ -268,246 +268,247 @@
 
         </div>
     </li>
-    <li class="half">
+    <li id="week5">
         <h2>Week5: 9 Graphs from ONS</h2>
-
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <script type="text/data">
-                {
-                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
-                   "background": "#333333",
-                   "title":{
-                      "text":"CG: Covid Corp Finance Facility: Commercial Paper: £m: NSA",
-                      "subtitleFontSize":8,
-                      "subtitleColor":"#ffffff",
-                      "anchor":"start",
-                      "color":"#ffffff"
-                   },
-                   "data":{
-                      "url":"data/week5/fsx6_pusf.json",
-                      "format": {"type": "json", "property": "years"}
-                   },
-                   "mark":{
-                      "type":"bar",
-                      "color": "#616AA5",
-                      "width": {"band":0.4}
-                   },
-                   "transform": [
-                        {
-                          "filter": "datum.value > 0"
+        <div class="vega-containers">
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "title":{
+                          "text":"CG: Covid Corp Finance Facility: Commercial Paper: £m: NSA",
+                          "subtitleFontSize":8,
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "data":{
+                          "url":"data/week5/fsx6_pusf.json",
+                          "format": {"type": "json", "property": "years"}
+                       },
+                       "mark":{
+                          "type":"bar",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0"
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
                         }
-                    ],
-                    "encoding": {
-                      "x": {
-                        "field": "label",
-                        "type": "ordinal",
-                         "axis":{
-                            "title":"Year",
-                            "grid":false,
-                            "ticks":2,
-                            "labelAngle":30,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         }
-                      },
-                      "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                         "axis":{
-                            "title": "£m",
-                            "grid":false,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         }
-                      },
-                      "tooltip": [
-                        {"field":"label"},
-                        {"field":"value"}
-                      ]
                     }
-                }
-                </script>
-        </div>
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <script type="text/data">
-                {
-                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
-                   "background": "#333333",
-                   "title":{
-                      "text":"CG: Covid Corp Finance Facility: Net cash requirement: £m: NSA",
-                      "subtitleColor":"#ffffff",
-                      "anchor":"start",
-                      "color":"#ffffff"
-                   },
-                   "data":{
-                      "url":"data/week5/fsx7_pusf.json",
-                      "format": {"type": "json", "property": "months"}
-                   },
-                   "mark":{
-                      "type":"bar",
-                      "color": "#616AA5",
-                      "width": {"band":0.4}                   },
-                   "transform": [
-                        {
-                          "filter": "datum.value > 0"
+                    </script>
+            </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "title":{
+                          "text":"CG: Covid Corp Finance Facility: Net cash requirement: £m: NSA",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "data":{
+                          "url":"data/week5/fsx7_pusf.json",
+                          "format": {"type": "json", "property": "months"}
+                       },
+                       "mark":{
+                          "type":"bar",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}                   },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0"
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Month",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domain": [0, 17000]
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
                         }
-                    ],
-                    "encoding": {
-                      "x": {
-                        "field": "label",
-                        "type": "ordinal",
-                         "axis":{
-                            "title":"Month",
-                            "grid":false,
-                            "ticks":2,
-                            "labelAngle":30,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         }
-                      },
-                      "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                         "axis":{
-                            "title": "£m",
-                            "grid":false,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         },
-                         "scale": {
-                            "domain": [0, 17000]
-                         }
-                      },
-                      "tooltip": [
-                        {"field":"label"},
-                        {"field":"value"}
-                      ]
                     }
-                }
-                </script>
-        </div>
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <script type="text/data">
-                {
-                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
-                   "background": "#333333",
-                   "title":{
-                      "text":"Trade in Goods (T): WW: Exports: BOP: CP: SA",
-                      "subtitleColor":"#ffffff",
-                      "anchor":"start",
-                      "color":"#ffffff"
-                   },
-                   "data":{
-                      "url":"data/week5/bokg_pnbp.json",
-                      "format": {"type": "json", "property": "years"}
-                   },
-                   "mark":{
-                      "type":"line",
-                      "color": "#616AA5",
-                      "width": {"band":0.4}
-                   },
-                   "transform": [
-                        {
-                          "filter": "datum.value > 0 && datum.year >= 2015 "
+                    </script>
+            </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "title":{
+                          "text":"Trade in Goods (T): WW: Exports: BOP: CP: SA",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "data":{
+                          "url":"data/week5/bokg_pnbp.json",
+                          "format": {"type": "json", "property": "years"}
+                       },
+                       "mark":{
+                          "type":"line",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0 && datum.year >= 2015 "
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domain": [250000,400000]
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
                         }
-                    ],
-                    "encoding": {
-                      "x": {
-                        "field": "label",
-                        "type": "ordinal",
-                         "axis":{
-                            "title":"Year",
-                            "grid":false,
-                            "ticks":2,
-                            "labelAngle":30,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         }
-                      },
-                      "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                         "axis":{
-                            "title": "£m",
-                            "grid":false,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         },
-                         "scale": {
-                            "domain": [250000,400000]
-                         }
-                      },
-                      "tooltip": [
-                        {"field":"label"},
-                        {"field":"value"}
-                      ]
                     }
-                }
-                </script>
-        </div>
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <script type="text/data">
-                {
-                   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
-                   "background": "#333333",
-                   "title":{
-                      "text":"Trade in Goods (T): WW: Imports: BOP: CP: SA",
-                      "subtitleColor":"#ffffff",
-                      "anchor":"start",
-                      "color":"#ffffff"
-                   },
-                   "data":{
-                      "url":"data/week5/bokh_pnbp.json",
-                      "format": {"type": "json", "property": "years"}
-                   },
-                   "mark":{
-                      "type":"line",
-                      "color": "#616AA5",
-                      "width": {"band":0.4}
-                   },
-                   "transform": [
-                        {
-                          "filter": "datum.value > 0 && datum.year >= 2015 "
+                    </script>
+            </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                       "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+                       "background": "#333333",
+                       "title":{
+                          "text":"Trade in Goods (T): WW: Imports: BOP: CP: SA",
+                          "subtitleColor":"#ffffff",
+                          "anchor":"start",
+                          "color":"#ffffff"
+                       },
+                       "data":{
+                          "url":"data/week5/bokh_pnbp.json",
+                          "format": {"type": "json", "property": "years"}
+                       },
+                       "mark":{
+                          "type":"line",
+                          "color": "#616AA5",
+                          "width": {"band":0.4}
+                       },
+                       "transform": [
+                            {
+                              "filter": "datum.value > 0 && datum.year >= 2015 "
+                            }
+                        ],
+                        "encoding": {
+                          "x": {
+                            "field": "label",
+                            "type": "ordinal",
+                             "axis":{
+                                "title":"Year",
+                                "grid":false,
+                                "ticks":2,
+                                "labelAngle":30,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             }
+                          },
+                          "y": {
+                            "field": "value",
+                            "type": "quantitative",
+                             "axis":{
+                                "title": "£m",
+                                "grid":false,
+                                "labelColor":"#ffffff",
+                                "titleColor":"#ffffff"
+                             },
+                             "scale": {
+                                "domainMin": 400000,
+                                "domainMax": 520000
+                             }
+                          },
+                          "tooltip": [
+                            {"field":"label"},
+                            {"field":"value"}
+                          ]
                         }
-                    ],
-                    "encoding": {
-                      "x": {
-                        "field": "label",
-                        "type": "ordinal",
-                         "axis":{
-                            "title":"Year",
-                            "grid":false,
-                            "ticks":2,
-                            "labelAngle":30,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         }
-                      },
-                      "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                         "axis":{
-                            "title": "£m",
-                            "grid":false,
-                            "labelColor":"#ffffff",
-                            "titleColor":"#ffffff"
-                         },
-                         "scale": {
-                            "domainMin": 400000,
-                            "domainMax": 520000
-                         }
-                      },
-                      "tooltip": [
-                        {"field":"label"},
-                        {"field":"value"}
-                      ]
                     }
-                }
-                </script>
+                    </script>
+            </div>
         </div>
     </li>
     <li>
