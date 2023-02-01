@@ -829,84 +829,11 @@
         </div>
     </li>
     <li>
-        <h2>Week8: Merging data</h2>
-        <p>Build a chart with data from two separate sources. Plot these data using correlation,
-            regression or some other technique.</p>
-        <div>
-            <div class="table">
-                <table>
-                    <caption>Travel Ideas</caption>
-                    <thead>
-                        <tr>
-                            <th>Location</th>
-                            <th>ETA/Duration</th>
-                            <th>Weather</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Blenhelm Palace</td><td>...</td><td>...</td>
-                        </tr>
-                        <tr>
-                            <td>Canterbury Cathedral</td><td>...</td><td>...</td>
-                        </tr>
-                        <tr>
-                            <td>Windsor Castle</td><td>...</td><td>...</td>
-                        </tr>
-                        <tr>
-                            <td>Stonehedge</td><td>...</td><td>...</td>
-                        </tr>
-                        <tr>
-                            <td>Peak District National Park</td>
-                            <td>...</td><td>...</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>This table combines data from weatherapi.com and google.com's direction API</p>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZkcc6D3OmYOsunlNNSyeOx3KGYPLGids"></script>
-                <script type="text/javascript" defer class="expose">
-                    const table = document.currentScript.closest('div').querySelector('table');
-                    const rows = table.querySelectorAll('tbody tr');
-                    const locations = [...rows].map( (row) => row.querySelector('td').innerText );
-
-                    for (let x = 0; x<locations.length; x++) {
-                        const location = locations[x] + ', UK';
-                        const row = rows[x];
-                        const cells = row.querySelectorAll('td');
-                        const etaCell = cells[1];
-                        const weatherCell = cells[2];
-                        (async () =>  etaCell.innerText = await getDrivingEta(location))();
-                        (async () =>  weatherCell.innerHTML = await getWeather(location))();
-                    }
-
-                    async function getWeather(location) {
-                        const apiKey = '568507c821cc4c5997352427220107';
-                        const apiUrl = 'https://api.weatherapi.com/v1/current.json?key='
-                        + apiKey
-                        + '&q=' + location + '&aqi=no';
-
-                        json = await  fetch(apiUrl)
-                            .then((r) => r.json());
-                        return '<img src="'+ json.current.condition.icon + '" class="weather-icon" /> '
-                            +json.current.condition.text;
-                    }
-
-                    async function getDrivingEta(location) {
-                        const service = new google.maps.DistanceMatrixService();
-                        json = await service.getDistanceMatrix(
-                            {
-                                origins: ['London'],
-                                destinations: [ location ],
-                                travelMode: 'DRIVING'
-                            },
-                            (json) => {
-                                //console.log(json);
-                            }
-                        );
-                        return json.rows[0]?.elements[0]?.duration.text;
-                    }
-                </script>
-        </div>
+        <h2>Week6: Reading week</h2>
+        <p>Reading week (no homework)</p>
+        <h2>Week7: Base map and a choropleth</h2>
+        <p>Produce two maps and embed them in your portfolio page. Both should be of the same country,
+            region, area, city.</p>
     </li>
     <li>
         <h2>Week9: Advanced analytics</h2>
