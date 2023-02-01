@@ -834,6 +834,21 @@
         <h2>Week7: Base map and a choropleth</h2>
         <p>Produce two maps and embed them in your portfolio page. Both should be of the same country,
             region, area, city.</p>
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+            {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "data": {
+                    "url": "data/states2.json",
+                    "format": {"type": "topojson", "feature": "states"}
+                },
+                "projection": {"type": "albersUsa"},
+                "mark": "geoshape",
+                "background":"#333333"
+            }
+            </script>
+        </div>
     </li>
     <li>
         <h2>Week9: Advanced analytics</h2>
