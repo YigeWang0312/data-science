@@ -880,17 +880,88 @@
     </li>
     <li>
         <h2>Week 8 – Festival of Economics</h2>
-            <p>Produce two charts that support or refute an argument at the Festival of Economics</p>
-            <!-- Set out (not more than 25 words) an argument that someone made.
-            Make two charts that support or refute it. This could be two that support, two that refute, or a
-            mixture.
-            Comment (not more than 25 words) on what you find. -->
+        <p>Produce two charts that support or refute an argument at the Festival of Economics</p>
+        <!-- Set out (not more than 25 words) an argument that someone made.
+        Make two charts that support or refute it. This could be two that support, two that refute, or a
+        mixture.
+        Comment (not more than 25 words) on what you find. -->
 
-            <blockquote>
-                Interest on cryptocurrencies was increased during the lockdown because people were looking for the thrill of betting.
-            </blockquote>
+        <blockquote>
+            Interest on cryptocurrencies was increased during the lockdown because people were looking for the thrill of betting.
+        </blockquote>
 
-
+        <div class="vega-container">
+            <div class="vega-caption">Bitcoin long run (<a href="https://github.com/RDeconomist/RDeconomist.github.io/blob/main/charts/crypto/chartcrypto1.json">Source</a>)</div>
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+            {
+               "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+               "title":{
+                  "text":"BTCUSD trade volume 2019-2021",
+                  "anchor":"start",
+                  "color":"#179fdb",
+                  "subtitleColor":"#179fdb"
+               },
+               "config":{
+                  "background":"#122b39",
+                  "view":{
+                     "stroke":"transparent"
+                  }
+               },
+               "width":290,
+               "height":300,
+               "data":{
+                  "name":"btcusd",
+                  "url":"data/week8/btcusd.csv"
+               },
+               "mark":{
+                  "type":"line",
+                  "point":false,
+                  "interpolate":"linear",
+                  "color":"#f4c245"
+               },
+               "transform":[
+                  {
+                     "calculate":"year(datum.date)",
+                     "as":"year"
+                  },
+                  {
+                     "filter":"datum.year>=2018"
+                  },
+                  {
+                     "filter":"datum.year<=2021"
+                  }
+               ],
+               "encoding":{
+                  "x":{
+                     "field":"date",
+                     "type":"temporal",
+                     "axis":{
+                        "title":null,
+                        "grid":false,
+                        "labelSeparation":10,
+                        "domainColor":"dimgrey",
+                        "labelColor":"#00a767",
+                        "tickColor":"pink",
+                        "gridColor":"dimgrey"
+                     }
+                  },
+                  "y":{
+                     "field":"volume",
+                     "type":"quantitative",
+                     "axis":{
+                        "grid":false,
+                        "domainColor":"dimgrey",
+                        "labelColor":"#00a767",
+                        "tickColor":"pink",
+                        "gridColor":"dimgrey",
+                        "format":"$,.5"
+                     }
+                  }
+               }
+            }
+            </script>
+        </div>
     </li>
     <li>
         <h2>Week10: Interactivity.</h2>
