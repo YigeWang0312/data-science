@@ -828,26 +828,54 @@
             </div>
         </div>
     </li>
-    <li>
+    <li id="week7">
         <h2>Week6: Reading week</h2>
         <p>Reading week (no homework)</p>
         <h2>Week7: Base map and a choropleth</h2>
         <p>Produce two maps and embed them in your portfolio page. Both should be of the same country,
             region, area, city.</p>
-        <div class="vega-container">
-            <div class="vega-canvas"></div>
-            <script type="text/data">
-            {
-                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "data": {
-                    "url": "data/states2.json",
-                    "format": {"type": "topojson", "feature": "states"}
-                },
-                "projection": {"type": "albersUsa"},
-                "mark": "geoshape",
-                "background":"#333333"
-            }
-            </script>
+        <div class="vega-containers">
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                    "data": {
+                        "url": "data/states2.json",
+                        "format": {"type": "topojson", "feature": "states"}
+                    },
+                    "projection": {"type": "albersUsa"},
+                    "mark": "geoshape",
+                    "background":"#333333"
+                }
+                </script>
+            </div>
+            <div class="vega-container">
+                <div class="vega-canvas"></div>
+                <div class="vega-caption">Vaccination Rate</div>
+                <script type="text/data">
+                        {
+                            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                            "data": {
+                                "url": "data/states2.json",
+                                "format": {"type": "topojson", "feature": "states"}
+                            },
+                              "transform": [
+                                {
+                                  "lookup": "id",
+                                  "from": {
+                                    "data": {"url": "data/vaccination-rate.csv"},
+                                    "key": "fips",
+                                    "fields": ["rate"]
+                                  }
+                                }
+                              ],
+                            "projection": {"type": "albersUsa"},
+                            "mark": "geoshape",
+                            "encoding": {"color": {"field": "rate", "type": "quantitative"}}
+                        }
+                        </script>
+            </div>
         </div>
     </li>
     <li>
