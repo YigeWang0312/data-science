@@ -960,6 +960,77 @@
             </script>
             <p>There's a slight increase on the trade volumes but it also comes down July 2020 only to come back up again nearing 2021</p>
         </div>
+        <div class="vega-container">
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+            {
+               "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+               "title":{
+                  "text":"BTCUSD trade volume 2019-2021",
+                  "anchor":"start",
+                  "color":"#179fdb",
+                  "subtitleColor":"#179fdb"
+               },
+               "config":{
+                  "background":"#122b39",
+                  "view":{
+                     "stroke":"transparent"
+                  }
+               },
+               "data":{
+                  "name":"btcusd",
+                  "url":"data/week8/btcusd.csv"
+               },
+               "mark":{
+                  "type":"line",
+                  "point":false,
+                  "interpolate":"linear",
+                  "color":"#f4c245"
+               },
+               "transform":[
+                  {
+                     "calculate":"year(datum.date)",
+                     "as":"year"
+                  },
+                  {
+                     "filter":"datum.year>=2019"
+                  },
+                  {
+                     "filter":"datum.year<=2021"
+                  }
+               ],
+               "encoding":{
+                  "x":{
+                     "field":"date",
+                     "type":"temporal",
+                     "axis":{
+                        "title":null,
+                        "grid":false,
+                        "labelSeparation":10,
+                        "domainColor":"dimgrey",
+                        "labelColor":"#00a767",
+                        "tickColor":"pink",
+                        "gridColor":"dimgrey"
+                     }
+                  },
+                  "y":{
+                     "field":"marketcap",
+                     "type":"quantitative",
+                     "axis":{
+                        "titleColor": "#ffffff",
+                        "grid":false,
+                        "domainColor":"dimgrey",
+                        "labelColor":"#00a767",
+                        "tickColor":"pink",
+                        "gridColor":"dimgrey",
+                        "format":"$,.5"
+                     }
+                  }
+               }
+            }
+            </script>
+            <p>Bitcoin market cap increased near the end of 2021, that could indicate increased interest by the masses</p>
+        </div>
     </li>
 </ol>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
