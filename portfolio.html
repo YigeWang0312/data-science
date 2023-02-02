@@ -878,7 +878,7 @@
             </div>
         </div>
     </li>
-    <li>
+    <li id="week8">
         <h2>Week 8 – Festival of Economics</h2>
         <p>Produce two charts that support or refute an argument at the Festival of Economics</p>
         <!-- Set out (not more than 25 words) an argument that someone made.
@@ -889,9 +889,7 @@
         <blockquote>
             Interest on cryptocurrencies was increased during the lockdown because people were looking for the thrill of betting.
         </blockquote>
-
         <div class="vega-container">
-            <div class="vega-caption">Bitcoin long run (<a href="https://github.com/RDeconomist/RDeconomist.github.io/blob/main/charts/crypto/chartcrypto1.json">Source</a>)</div>
             <div class="vega-canvas"></div>
             <script type="text/data">
             {
@@ -908,8 +906,6 @@
                      "stroke":"transparent"
                   }
                },
-               "width":290,
-               "height":300,
                "data":{
                   "name":"btcusd",
                   "url":"data/week8/btcusd.csv"
@@ -926,7 +922,7 @@
                      "as":"year"
                   },
                   {
-                     "filter":"datum.year>=2018"
+                     "filter":"datum.year>=2019"
                   },
                   {
                      "filter":"datum.year<=2021"
@@ -950,6 +946,7 @@
                      "field":"volume",
                      "type":"quantitative",
                      "axis":{
+                        "titleColor": "#ffffff",
                         "grid":false,
                         "domainColor":"dimgrey",
                         "labelColor":"#00a767",
@@ -961,63 +958,11 @@
                }
             }
             </script>
-        </div>
-    </li>
-    <li>
-        <h2>Week10: Interactivity.</h2>
-        <p>Build and embed two interactive charts.</p>
-        <div>
+            <p>There's a slight increase on the trade volumes but it also comes down July 2020 only to come back up again nearing 2021</p>
         </div>
     </li>
 </ol>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer>
-        document.querySelectorAll('div.chartJs').forEach(
-            async function(el) {
-                const ctx = el.querySelector('canvas');
-                const dataFunction = ctx.getAttribute('data-data-function');
-                const dataEl = el.querySelector('script[type="text/data"]');
-                const dataScript = el.querySelector('script[type="text/javascript-function"]');
-                let data;
-                let code;
-                let codeLanguage = 'javascript';
-                if (dataEl) {
-                    code = dataEl.innerText;
-                    data = JSON.parse(dataEl.innerText);
-                    codeLanguage = 'json';
-                }
-                else if (dataScript) {
-                    code = dataScript.innerText;
-                    await eval(dataScript.innerText);
-                }
-                if (code) {
-                    exposeCode(code, codeLanguage, el);
-                }
-
-                new Chart(ctx, data);
-            }
-        );
-
-
-        function exposeCode(code, language, parentEl) {
-            const firstLineWhiteSpace = code.match(/(?<=\n)\s+(?=\S)/m);
-            code = code.replaceAll(firstLineWhiteSpace[0],'');
-            const codeEl = document.createElement('pre');
-            codeEl.innerHTML = '<code>' + hljs.highlight(code, {language}).value + '</code>';
-            parentEl.appendChild(codeEl);
-        }
-
-        document.querySelectorAll('script.expose').forEach(
-            (el) => {
-                exposeCode(
-                    el.innerText,
-                    'javascript',
-                    el.closest('div')
-                );
-            }
-        );
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>

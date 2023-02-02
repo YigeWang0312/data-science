@@ -21,6 +21,7 @@ body#portfolio {
       &#week2,
       &#week3-1,
       &#week3-2,
+      &#week8,
       &.half {
         background:#333;
         display:inline-block;
@@ -55,6 +56,16 @@ body#portfolio {
             display:inline-block;
           }
         }
+      }
+      &#week8 {
+        div.vega-container {
+          text-align:center;
+        }
+      }
+      blockquote {
+        background:#222;
+        padding:0.5em 1em;
+        border:1px solid #888;
       }
     }
   }

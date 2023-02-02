@@ -16,7 +16,7 @@ body#portfolio {
       border-bottom: 0; }
       body#portfolio main > ol > li:nth-child(even):not(.half) {
         background-color: #222; }
-      body#portfolio main > ol > li#week1, body#portfolio main > ol > li#week2, body#portfolio main > ol > li#week3-1, body#portfolio main > ol > li#week3-2, body#portfolio main > ol > li.half {
+      body#portfolio main > ol > li#week1, body#portfolio main > ol > li#week2, body#portfolio main > ol > li#week3-1, body#portfolio main > ol > li#week3-2, body#portfolio main > ol > li#week8, body#portfolio main > ol > li.half {
         background: #333;
         display: inline-block;
         width: 43%;
@@ -24,7 +24,7 @@ body#portfolio {
         margin-top: 2em;
         margin-bottom: 2em;
         border-radius: 30px; }
-        body#portfolio main > ol > li#week1 + .half, body#portfolio main > ol > li#week2 + .half, body#portfolio main > ol > li#week3-1 + .half, body#portfolio main > ol > li#week3-2 + .half, body#portfolio main > ol > li.half + .half {
+        body#portfolio main > ol > li#week1 + .half, body#portfolio main > ol > li#week2 + .half, body#portfolio main > ol > li#week3-1 + .half, body#portfolio main > ol > li#week3-2 + .half, body#portfolio main > ol > li#week8 + .half, body#portfolio main > ol > li.half + .half {
           border-right-width: 0; }
       body#portfolio main > ol > li.figure {
         text-align: center; }
@@ -42,5 +42,11 @@ body#portfolio {
           flex-wrap: wrap; }
           body#portfolio main > ol > li#week5 div.vega-containers div.vega-container, body#portfolio main > ol > li#week7 div.vega-containers div.vega-container {
             display: inline-block; }
+      body#portfolio main > ol > li#week8 div.vega-container {
+        text-align: center; }
+      body#portfolio main > ol > li blockquote {
+        background: #222;
+        padding: 0.5em 1em;
+        border: 1px solid #888; }
 
 /*# sourceMappingURL=portfolio.css.map */
