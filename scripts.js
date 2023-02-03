@@ -2,7 +2,6 @@ let mapWidth;
 document.querySelectorAll('div.vega-container').forEach(
     async function(el) {
         mapWidth = mapWidth ?? Math.min(800,el.clientWidth*0.78);
-        const ratio = mapWidth/800;
         const vegaDiv = el.querySelector('div.vega-canvas');
         const dataFunction = vegaDiv.getAttribute('data-data-function');
         const dataEl = el.querySelector('script[type="text/data"]');
@@ -13,8 +12,10 @@ document.querySelectorAll('div.vega-container').forEach(
         if (dataEl) {
             code = dataEl.innerText;
             data = JSON.parse(dataEl.innerText);
-            data.width = data.width ?? mapWidth;
-            data.height = data.height ?? 500*ratio;
+            data.width = data.width ? Math.min(data.width,window.innerWidth) : mapWidth;
+
+            const ratio = data.width/800;
+            data.height = 500*ratio;
             try {
                 data.marks[0].encode.update.size.value *= ratio*ratio;
                 data.marks[2].encode.enter.fontSize.value *= ratio;
