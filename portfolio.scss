@@ -50,6 +50,7 @@ body#portfolio {
           padding-left:0.5em;
           padding-right:0.5em;
           padding-bottom:1em;
+          padding-top:0.5em;
           img {
             margin-bottom:1em;
           }
@@ -118,6 +119,9 @@ body#portfolio {
         &#week8,
         &#week10 {
           background:#222;
+        }
+        h2 {
+          margin:0.5em 1em;
         }
       }
     }

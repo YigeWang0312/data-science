@@ -36,6 +36,7 @@ body#portfolio {
           padding-left: 0.5em;
           padding-right: 0.5em;
           padding-bottom: 1em;
+          padding-top: 0.5em;
           text-align: center; }
           body#portfolio main > ol > li#week2 figure img, body#portfolio main > ol > li#week3-1 figure img, body#portfolio main > ol > li#week3-2 figure img, body#portfolio main > ol > li#week4 figure img, body#portfolio main > ol > li#week8 figure img, body#portfolio main > ol > li#week9 figure img, body#portfolio main > ol > li#week10 figure img, body#portfolio main > ol > li#week11 figure img, body#portfolio main > ol > li.half figure img {
             margin-bottom: 1em; }
@@ -71,6 +72,8 @@ body#portfolio {
     padding-bottom: 2em;
     border-bottom: 1px solid #888; }
   body#portfolio main > ol li#week3-1, body#portfolio main > ol li#week4, body#portfolio main > ol li#week8, body#portfolio main > ol li#week10 {
-    background: #222; } }
+    background: #222; }
+  body#portfolio main > ol li h2 {
+    margin: 0.5em 1em; } }
 
 /*# sourceMappingURL=portfolio.css.map */
