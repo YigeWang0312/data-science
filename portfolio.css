@@ -62,4 +62,15 @@ body#portfolio {
         padding: 0.5em 1em;
         border: 1px solid #888; }
 
+@media only screen and (max-width: 1200px) {
+  body#portfolio main > ol li#week2, body#portfolio main > ol li#week3-1, body#portfolio main > ol li#week3-2, body#portfolio main > ol li#week4, body#portfolio main > ol li#week8, body#portfolio main > ol li#week9, body#portfolio main > ol li#week10, body#portfolio main > ol li#week11, body#portfolio main > ol li.half {
+    width: 100%;
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #888; }
+  body#portfolio main > ol li#week3-1, body#portfolio main > ol li#week4, body#portfolio main > ol li#week8, body#portfolio main > ol li#week10 {
+    background: #222; } }
+
 /*# sourceMappingURL=portfolio.css.map */

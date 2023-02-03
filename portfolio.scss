@@ -96,7 +96,30 @@ body#portfolio {
 @media only screen and (max-width: 1200px) {
   body#portfolio {
     main > ol {
-
+      li {
+        &#week2,
+        &#week3-1,
+        &#week3-2,
+        &#week4,
+        &#week8,
+        &#week9,
+        &#week10,
+        &#week11,
+        &.half {
+          width:100%;
+          border-radius:0;
+          margin-top:0;
+          margin-bottom:0;
+          padding-bottom:2em;
+          border-bottom:1px solid #888;
+        }
+        &#week3-1,
+        &#week4,
+        &#week8,
+        &#week10 {
+          background:#222;
+        }
+      }
     }
   }
 }
