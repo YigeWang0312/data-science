@@ -77,7 +77,7 @@ body#portfolio {
     margin-bottom: 0;
     padding-bottom: 2em;
     border-bottom: 1px solid #888; }
-  body#portfolio main > ol li#week3-1, body#portfolio main > ol li#week4, body#portfolio main > ol li#week8, body#portfolio main > ol li#week10 {
+  body#portfolio main > ol li#week2, body#portfolio main > ol li#week4, body#portfolio main > ol li#week8, body#portfolio main > ol li#week10 {
     background: #222; }
   body#portfolio main > ol li h2 {
     margin: 0.5em 1em; } }
