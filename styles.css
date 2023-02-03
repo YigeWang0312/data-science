@@ -200,7 +200,7 @@ table tr td:first-child {
 img.weather-icon {
   max-height: 1.5em; }
 
-main ol.project div.vega-container {
+main ol div.vega-container {
   text-align: center; }
 
 main ol.project div.vega-canvas + p,

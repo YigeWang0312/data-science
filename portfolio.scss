@@ -22,6 +22,7 @@ body#portfolio {
       &#week3-1,
       &#week3-2,
       &#week8,
+      &#week9,
       &.half {
         background:#333;
         display:inline-block;
@@ -32,6 +33,11 @@ body#portfolio {
         border-radius:30px;
         & + .half {
           border-right-width:0;
+        }
+
+        .vega-canvas {
+          border:1px solid #aaa;
+          background:#282828;
         }
       }
       &.figure {
