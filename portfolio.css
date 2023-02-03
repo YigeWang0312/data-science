@@ -1,9 +1,6 @@
 body#portfolio {
   padding: 0;
   margin: 0; }
-  body#portfolio a {
-    color: #999;
-    text-decoration: underline; }
   body#portfolio main > ol {
     display: flex;
     flex-direction: row;
@@ -17,6 +14,9 @@ body#portfolio {
       width: 100%;
       border-top: 0;
       border-bottom: 0; }
+      body#portfolio main > ol > li a {
+        color: #999;
+        text-decoration: underline; }
       body#portfolio main > ol > li:nth-child(even):not(.half) {
         background-color: #222; }
       body#portfolio main > ol > li#week2, body#portfolio main > ol > li#week3-1, body#portfolio main > ol > li#week3-2, body#portfolio main > ol > li#week4, body#portfolio main > ol > li#week8, body#portfolio main > ol > li#week9, body#portfolio main > ol > li#week10, body#portfolio main > ol > li#week11, body#portfolio main > ol > li.half {

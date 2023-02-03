@@ -66,6 +66,9 @@ nav {
 	display:flex;
 	flex-direction:row;
 	align-items: center;
+    a {
+        color:#fff;
+    }
 }
 nav .site-title{
 	width:30%;
@@ -103,7 +106,7 @@ nav .nav-menu a{
 	text-transform:uppercase;
 	font-weight:900;
 	transition:ease .2s;
-    color:inherit;
+    color:#fff;
 }
 nav .nav-menu a:hover, nav .nav-menu a:active{
 	color:#6CEFEF;
