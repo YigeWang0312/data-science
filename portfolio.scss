@@ -22,9 +22,9 @@ body#portfolio {
       &:nth-child(even):not(.half) {
         background-color:#222;
       }
+      &#week1,
       &#week2,
       &#week3-1,
-      &#week3-2,
       &#week4,
       &#week8,
       &#week9,
@@ -69,6 +69,14 @@ body#portfolio {
           background:#3a3a3a;
         }
       }
+      &#week3-2 {
+        text-align:center;
+        .vega-container {
+          width:100%;
+          max-width:800px;
+          margin:auto;
+        }
+      }
       &#week5, &#week7 {
         text-align:center;
         div.vega-containers {
@@ -98,8 +106,8 @@ body#portfolio {
   body#portfolio {
     main > ol {
       li {
+        &#week1,
         &#week2,
-        &#week3-1,
         &#week3-2,
         &#week4,
         &#week8,

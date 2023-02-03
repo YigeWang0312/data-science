@@ -13,8 +13,8 @@ document.querySelectorAll('div.vega-container').forEach(
         if (dataEl) {
             code = dataEl.innerText;
             data = JSON.parse(dataEl.innerText);
-            data.width = mapWidth;
-            data.height = 500*ratio;
+            data.width = data.width ?? mapWidth;
+            data.height = data.height ?? 500*ratio;
             try {
                 data.marks[0].encode.update.size.value *= ratio*ratio;
                 data.marks[2].encode.enter.fontSize.value *= ratio;

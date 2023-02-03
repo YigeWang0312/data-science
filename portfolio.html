@@ -28,15 +28,7 @@
         <p>Build your multi-page site. Host it on GitHub, with at least two pages: index (your
             portfolio) and project. Feel free to add more pages (about etc) and make your index and into page. If
             you do this make a clear portfolio page – this is what we will mark.</p>
-        <div>
-            <p>This <a href="./">Website</a> is hosted via Github pages</p>
-        </div>
-    </li>
-    <li id="week2">
-        <h2>Week2: Embedding</h2>
-        <p>Embed three charts, two that are given to you in class. One (as homework) taken from the
-            repository of charts that drive www.rapidcharts.io</p>
-        <div>
+        <div class="vega-containers">
             <div class="vega-container">
                 <div class="vega-caption">Bitcoin long run (<a href="https://github.com/RDeconomist/RDeconomist.github.io/blob/main/charts/crypto/chartcrypto1.json">Source</a>)</div>
                 <div class="vega-canvas"></div>
@@ -140,10 +132,112 @@
                     }
                 </script>
             </div>
+            <div class="vega-container">
+                <div class="vega-caption">Doge long run (<a href="https://github.com/RDeconomist/RDeconomist.github.io/blob/main/charts/crypto/chartcrypto5.json">Source</a>)</div>
+                <div class="vega-canvas"></div>
+                <script type="text/data">
+                    {
+                        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+
+                       "title": {
+                        "text": "Dogecoin: long run",
+                        "subtitle":"Daily DOGE price in USD. Source: Coindesk",
+                        "subtitleFontStyle":"italic",
+                        "subtitleFontSize":10,
+                        "anchor": "start",
+                        "color": "#179fdb",
+                        "subtitleColor":"#179fdb"},
+
+                      "config": {
+                        "background":"#122b39",
+                        "view": {
+                          "stroke": "transparent"}},
+
+
+
+                        "width":295,
+                        "height":300,
+
+
+                        "data": {
+                          "name":"myData",
+                          "url": "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/main/charts/crypto/dataDOGEcoindesk.csv"},
+
+
+                        "mark": {
+                        "type": "line",
+                        "point": false,
+                        "interpolate": "linear",
+                        "color":"#4dcaff"
+                      },
+
+                      "transform": [
+                        {"calculate": "timeParse(datum.Date, '%d/%m/%Y')", "as": "date"},
+                        {"calculate": "year(datum.date)", "as": "year"},
+
+                        {"filter": "datum.year>=minYear"},
+                        {"filter": "datum.year<=maxYear"}
+                    ],
+
+                        "params": [
+                          {"name":"minYear", "value":2019,
+                             "bind":{
+                               "input": "range",
+                               "min": 2019,
+                               "max": 2021,
+                               "step": 1,
+                               "name": "Start year:"}
+                          },
+
+                          {"name":"maxYear", "value":2021,
+                             "bind":{
+                               "input": "range",
+                               "min": 2019,
+                               "max": 2021,
+                               "step": 1,
+                               "name": "End year:"}
+                          }
+                        ],
+
+
+
+                        "encoding": {
+
+
+                        "x": {
+                          "field": "date",
+                          "type": "temporal",
+                          "axis": {
+                            "title": null,
+                            "grid": false,
+                            "labelSeparation": 10,
+                            "domainColor":"dimgrey",
+                            "labelColor":"#00a767",
+                            "tickColor":"pink",
+                            "gridColor":"dimgrey"
+                          }},
+
+                        "y": {
+                          "field": "Closing Price (USD)",
+                          "type": "quantitative",
+                          "title": "",
+                          "axis": {
+                            "grid": false,
+                            "domainColor":"dimgrey",
+                            "labelColor":"#00a767",
+                            "tickColor":"pink",
+                            "gridColor":"dimgrey",
+                            "format":"$,.5"}
+                            }
+                         }
+                      }
+                </script>
+            </div>
         </div>
     </li>
-    <li id="week3-1">
-        <h2>Week3: Hosting data</h2>
+    <li id="week2">
+        <h2>Week2: Hosting data</h2>
         <div>
             <div class="vega-container">
                 <div class="vega-caption">IMF Outstanding Credit</div>
@@ -201,9 +295,6 @@
                 </script>
             </div>
         </div>
-    </li>
-    <li id="week3-2">
-        <h2>Week3: Hosting data</h2>
         <div class="vega-container">
             <div class="vega-caption">IMF Outstanding Credit vs World GDP</div>
             <div class="vega-canvas"></div>
@@ -253,6 +344,135 @@
                 }
                 </script>
         </div>
+    </li>
+    <li id="week3-2">
+        <h2>Week3: Inline data objects and visual encodings</h2>
+
+
+        <div class="vega-container">
+            <div class="vega-caption">London/Sheffield Rate of Covid New Cases</div>
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+            {
+              "width":800,
+              "height": 500,
+              "$schema": "https://vega.github.io/schema/vega/v5.json",
+              "description": "A basic stacked bar chart example.",
+              "padding": 5,
+              "data": [
+                {
+                  "name": "table",
+                  "values": [{"areaName": "Sheffield", "date": "2022-12-10", "rate": 56.0}, {"areaName": "Hackney and City of London", "date": "2022-12-10", "rate": 35.3}, {"areaName": "Sheffield", "date": "2022-12-11", "rate": 57.4}, {"areaName": "Hackney and City of London", "date": "2022-12-11", "rate": 37.7}, {"areaName": "Sheffield", "date": "2022-12-12", "rate": 58.6}, {"areaName": "Hackney and City of London", "date": "2022-12-12", "rate": 38.4}, {"areaName": "Sheffield", "date": "2022-12-13", "rate": 61.8}, {"areaName": "Hackney and City of London", "date": "2022-12-13", "rate": 37.3}, {"areaName": "Hackney and City of London", "date": "2022-12-14", "rate": 38.4}, {"areaName": "Sheffield", "date": "2022-12-14", "rate": 66.0}, {"areaName": "Hackney and City of London", "date": "2022-12-15", "rate": 42.5}, {"areaName": "Sheffield", "date": "2022-12-15", "rate": 65.7}, {"areaName": "Sheffield", "date": "2022-12-16", "rate": 67.7}, {"areaName": "Hackney and City of London", "date": "2022-12-16", "rate": 46.6}, {"areaName": "Hackney and City of London", "date": "2022-12-17", "rate": 45.6}, {"areaName": "Sheffield", "date": "2022-12-17", "rate": 67.7}, {"areaName": "Hackney and City of London", "date": "2022-12-18", "rate": 46.3}, {"areaName": "Sheffield", "date": "2022-12-18", "rate": 69.2}, {"areaName": "Hackney and City of London", "date": "2022-12-19", "rate": 44.2}, {"areaName": "Sheffield", "date": "2022-12-19", "rate": 76.4}, {"areaName": "Sheffield", "date": "2022-12-20", "rate": 78.1}, {"areaName": "Hackney and City of London", "date": "2022-12-20", "rate": 47.3}, {"areaName": "Sheffield", "date": "2022-12-21", "rate": 74.7}, {"areaName": "Hackney and City of London", "date": "2022-12-21", "rate": 44.2}, {"areaName": "Sheffield", "date": "2022-12-22", "rate": 78.2}, {"areaName": "Hackney and City of London", "date": "2022-12-22", "rate": 40.1}, {"areaName": "Sheffield", "date": "2022-12-23", "rate": 78.2}, {"areaName": "Hackney and City of London", "date": "2022-12-23", "rate": 37.0}, {"areaName": "Sheffield", "date": "2022-12-24", "rate": 77.1}, {"areaName": "Hackney and City of London", "date": "2022-12-24", "rate": 34.9}, {"areaName": "Sheffield", "date": "2022-12-25", "rate": 73.5}, {"areaName": "Hackney and City of London", "date": "2022-12-25", "rate": 32.5}, {"areaName": "Sheffield", "date": "2022-12-26", "rate": 64.8}, {"areaName": "Hackney and City of London", "date": "2022-12-26", "rate": 30.8}, {"areaName": "Sheffield", "date": "2022-12-27", "rate": 60.1}, {"areaName": "Hackney and City of London", "date": "2022-12-27", "rate": 24.3}, {"areaName": "Hackney and City of London", "date": "2022-12-28", "rate": 24.3}, {"areaName": "Sheffield", "date": "2022-12-28", "rate": 65.2}, {"areaName": "Hackney and City of London", "date": "2022-12-29", "rate": 22.3}, {"areaName": "Sheffield", "date": "2022-12-29", "rate": 65.7}, {"areaName": "Sheffield", "date": "2022-12-30", "rate": 66.0}, {"areaName": "Hackney and City of London", "date": "2022-12-30", "rate": 19.2}, {"areaName": "Hackney and City of London", "date": "2022-12-31", "rate": 17.5}, {"areaName": "Sheffield", "date": "2022-12-31", "rate": 69.1}, {"areaName": "Sheffield", "date": "2023-01-01", "rate": 69.2}, {"areaName": "Hackney and City of London", "date": "2023-01-01", "rate": 17.1}, {"areaName": "Sheffield", "date": "2023-01-02", "rate": 68.6}, {"areaName": "Hackney and City of London", "date": "2023-01-02", "rate": 16.1}, {"areaName": "Hackney and City of London", "date": "2023-01-03", "rate": 19.2}, {"areaName": "Sheffield", "date": "2023-01-03", "rate": 72.1}, {"areaName": "Hackney and City of London", "date": "2023-01-04", "rate": 17.8}, {"areaName": "Sheffield", "date": "2023-01-04", "rate": 63.0}, {"areaName": "Hackney and City of London", "date": "2023-01-05", "rate": 18.8}, {"areaName": "Sheffield", "date": "2023-01-05", "rate": 62.1}, {"areaName": "Sheffield", "date": "2023-01-06", "rate": 60.8}, {"areaName": "Hackney and City of London", "date": "2023-01-06", "rate": 20.6}, {"areaName": "Sheffield", "date": "2023-01-07", "rate": 58.0}, {"areaName": "Hackney and City of London", "date": "2023-01-07", "rate": 21.6}, {"areaName": "Sheffield", "date": "2023-01-08", "rate": 58.6}, {"areaName": "Hackney and City of London", "date": "2023-01-08", "rate": 22.6}, {"areaName": "Sheffield", "date": "2023-01-09", "rate": 53.1}, {"areaName": "Hackney and City of London", "date": "2023-01-09", "rate": 23.6}, {"areaName": "Sheffield", "date": "2023-01-10", "rate": 46.7}, {"areaName": "Hackney and City of London", "date": "2023-01-10", "rate": 18.5}, {"areaName": "Sheffield", "date": "2023-01-11", "rate": 44.0}, {"areaName": "Hackney and City of London", "date": "2023-01-11", "rate": 16.8}, {"areaName": "Hackney and City of London", "date": "2023-01-12", "rate": 16.8}, {"areaName": "Sheffield", "date": "2023-01-12", "rate": 36.7}, {"areaName": "Hackney and City of London", "date": "2023-01-13", "rate": 14.4}, {"areaName": "Sheffield", "date": "2023-01-13", "rate": 33.4}, {"areaName": "Sheffield", "date": "2023-01-14", "rate": 30.5}, {"areaName": "Hackney and City of London", "date": "2023-01-14", "rate": 13.7}, {"areaName": "Sheffield", "date": "2023-01-15", "rate": 29.4}, {"areaName": "Hackney and City of London", "date": "2023-01-15", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-16", "rate": 30.7}, {"areaName": "Hackney and City of London", "date": "2023-01-16", "rate": 12.0}, {"areaName": "Sheffield", "date": "2023-01-17", "rate": 27.5}, {"areaName": "Hackney and City of London", "date": "2023-01-17", "rate": 12.0}, {"areaName": "Hackney and City of London", "date": "2023-01-18", "rate": 13.0}, {"areaName": "Sheffield", "date": "2023-01-18", "rate": 26.6}, {"areaName": "Hackney and City of London", "date": "2023-01-19", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-19", "rate": 25.5}, {"areaName": "Hackney and City of London", "date": "2023-01-20", "rate": 11.0}, {"areaName": "Sheffield", "date": "2023-01-20", "rate": 23.3}, {"areaName": "Hackney and City of London", "date": "2023-01-21", "rate": 11.3}, {"areaName": "Sheffield", "date": "2023-01-21", "rate": 23.3}, {"areaName": "Sheffield", "date": "2023-01-22", "rate": 23.4}, {"areaName": "Hackney and City of London", "date": "2023-01-22", "rate": 10.6}, {"areaName": "Sheffield", "date": "2023-01-23", "rate": 22.6}, {"areaName": "Hackney and City of London", "date": "2023-01-23", "rate": 8.9}, {"areaName": "Sheffield", "date": "2023-01-24", "rate": 22.6}, {"areaName": "Hackney and City of London", "date": "2023-01-24", "rate": 9.9}, {"areaName": "Sheffield", "date": "2023-01-25", "rate": 25.1}, {"areaName": "Hackney and City of London", "date": "2023-01-25", "rate": 9.3}, {"areaName": "Sheffield", "date": "2023-01-26", "rate": 27.3}, {"areaName": "Hackney and City of London", "date": "2023-01-26", "rate": 9.9}, {"areaName": "Hackney and City of London", "date": "2023-01-27", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-27", "rate": 30.9}, {"areaName": "Sheffield", "date": "2023-01-28", "rate": 33.4}, {"areaName": "Hackney and City of London", "date": "2023-01-28", "rate": 12.7}],
+                  "transform": [
+                    {
+                      "type": "stack",
+                      "groupby": ["date"],
+                      "sort": {"field": "areaName"},
+                      "field": "rate"
+                    }
+                  ]
+                }
+              ],
+
+              "scales": [
+                {
+                  "name": "x",
+                  "type": "band",
+                  "range": "width",
+                  "domain": {"data": "table", "field": "date"}
+                },
+                {
+                  "name": "y",
+                  "type": "linear",
+                  "range": "height",
+                  "nice": true, "zero": true,
+                  "domain": {"data": "table", "field": "y1"}
+                },
+                {
+                  "name": "color",
+                  "type": "ordinal",
+                  "range": "category",
+                  "domain": {"data": "table", "field": "areaName"}
+                }
+              ],
+
+              "axes": [
+                {"orient": "bottom", "scale": "x", "zindex": 1, "labelColor" : "#ffffff", "labelOverlap":"greedy"},
+                {"orient": "left", "scale": "y", "zindex": 1, "labelColor" : "#ffffff"}
+              ],
+
+              "marks": [
+                {
+                  "type": "rect",
+                  "from": {"data": "table"},
+                  "encode": {
+                    "enter": {
+                      "x": {"scale": "x", "field": "date"},
+                      "width": {"scale": "x", "band": 1, "offset": -1},
+                      "y": {"scale": "y", "field": "y0"},
+                      "y2": {"scale": "y", "field": "y1"},
+                      "fill": {"scale": "color", "field": "areaName"}
+                    },
+                    "update": {
+                      "fillOpacity": {"value": 1}
+                    },
+                    "hover": {
+                      "fillOpacity": {"value": 0.5}
+                    }
+                  }
+                }
+              ]
+            }
+            </script>
+        </div>
+        <div class="vega-container">
+            <div class="vega-caption">London/Sheffield Rate of Covid New Cases</div>
+            <div class="vega-canvas"></div>
+            <script type="text/data">
+            {
+              "width":800,
+              "height": 500,
+              "data": {
+                "values": [{"areaName": "Sheffield", "date": "2022-12-10", "rate": 56.0}, {"areaName": "Hackney and City of London", "date": "2022-12-10", "rate": 35.3}, {"areaName": "Sheffield", "date": "2022-12-11", "rate": 57.4}, {"areaName": "Hackney and City of London", "date": "2022-12-11", "rate": 37.7}, {"areaName": "Sheffield", "date": "2022-12-12", "rate": 58.6}, {"areaName": "Hackney and City of London", "date": "2022-12-12", "rate": 38.4}, {"areaName": "Sheffield", "date": "2022-12-13", "rate": 61.8}, {"areaName": "Hackney and City of London", "date": "2022-12-13", "rate": 37.3}, {"areaName": "Hackney and City of London", "date": "2022-12-14", "rate": 38.4}, {"areaName": "Sheffield", "date": "2022-12-14", "rate": 66.0}, {"areaName": "Hackney and City of London", "date": "2022-12-15", "rate": 42.5}, {"areaName": "Sheffield", "date": "2022-12-15", "rate": 65.7}, {"areaName": "Sheffield", "date": "2022-12-16", "rate": 67.7}, {"areaName": "Hackney and City of London", "date": "2022-12-16", "rate": 46.6}, {"areaName": "Hackney and City of London", "date": "2022-12-17", "rate": 45.6}, {"areaName": "Sheffield", "date": "2022-12-17", "rate": 67.7}, {"areaName": "Hackney and City of London", "date": "2022-12-18", "rate": 46.3}, {"areaName": "Sheffield", "date": "2022-12-18", "rate": 69.2}, {"areaName": "Hackney and City of London", "date": "2022-12-19", "rate": 44.2}, {"areaName": "Sheffield", "date": "2022-12-19", "rate": 76.4}, {"areaName": "Sheffield", "date": "2022-12-20", "rate": 78.1}, {"areaName": "Hackney and City of London", "date": "2022-12-20", "rate": 47.3}, {"areaName": "Sheffield", "date": "2022-12-21", "rate": 74.7}, {"areaName": "Hackney and City of London", "date": "2022-12-21", "rate": 44.2}, {"areaName": "Sheffield", "date": "2022-12-22", "rate": 78.2}, {"areaName": "Hackney and City of London", "date": "2022-12-22", "rate": 40.1}, {"areaName": "Sheffield", "date": "2022-12-23", "rate": 78.2}, {"areaName": "Hackney and City of London", "date": "2022-12-23", "rate": 37.0}, {"areaName": "Sheffield", "date": "2022-12-24", "rate": 77.1}, {"areaName": "Hackney and City of London", "date": "2022-12-24", "rate": 34.9}, {"areaName": "Sheffield", "date": "2022-12-25", "rate": 73.5}, {"areaName": "Hackney and City of London", "date": "2022-12-25", "rate": 32.5}, {"areaName": "Sheffield", "date": "2022-12-26", "rate": 64.8}, {"areaName": "Hackney and City of London", "date": "2022-12-26", "rate": 30.8}, {"areaName": "Sheffield", "date": "2022-12-27", "rate": 60.1}, {"areaName": "Hackney and City of London", "date": "2022-12-27", "rate": 24.3}, {"areaName": "Hackney and City of London", "date": "2022-12-28", "rate": 24.3}, {"areaName": "Sheffield", "date": "2022-12-28", "rate": 65.2}, {"areaName": "Hackney and City of London", "date": "2022-12-29", "rate": 22.3}, {"areaName": "Sheffield", "date": "2022-12-29", "rate": 65.7}, {"areaName": "Sheffield", "date": "2022-12-30", "rate": 66.0}, {"areaName": "Hackney and City of London", "date": "2022-12-30", "rate": 19.2}, {"areaName": "Hackney and City of London", "date": "2022-12-31", "rate": 17.5}, {"areaName": "Sheffield", "date": "2022-12-31", "rate": 69.1}, {"areaName": "Sheffield", "date": "2023-01-01", "rate": 69.2}, {"areaName": "Hackney and City of London", "date": "2023-01-01", "rate": 17.1}, {"areaName": "Sheffield", "date": "2023-01-02", "rate": 68.6}, {"areaName": "Hackney and City of London", "date": "2023-01-02", "rate": 16.1}, {"areaName": "Hackney and City of London", "date": "2023-01-03", "rate": 19.2}, {"areaName": "Sheffield", "date": "2023-01-03", "rate": 72.1}, {"areaName": "Hackney and City of London", "date": "2023-01-04", "rate": 17.8}, {"areaName": "Sheffield", "date": "2023-01-04", "rate": 63.0}, {"areaName": "Hackney and City of London", "date": "2023-01-05", "rate": 18.8}, {"areaName": "Sheffield", "date": "2023-01-05", "rate": 62.1}, {"areaName": "Sheffield", "date": "2023-01-06", "rate": 60.8}, {"areaName": "Hackney and City of London", "date": "2023-01-06", "rate": 20.6}, {"areaName": "Sheffield", "date": "2023-01-07", "rate": 58.0}, {"areaName": "Hackney and City of London", "date": "2023-01-07", "rate": 21.6}, {"areaName": "Sheffield", "date": "2023-01-08", "rate": 58.6}, {"areaName": "Hackney and City of London", "date": "2023-01-08", "rate": 22.6}, {"areaName": "Sheffield", "date": "2023-01-09", "rate": 53.1}, {"areaName": "Hackney and City of London", "date": "2023-01-09", "rate": 23.6}, {"areaName": "Sheffield", "date": "2023-01-10", "rate": 46.7}, {"areaName": "Hackney and City of London", "date": "2023-01-10", "rate": 18.5}, {"areaName": "Sheffield", "date": "2023-01-11", "rate": 44.0}, {"areaName": "Hackney and City of London", "date": "2023-01-11", "rate": 16.8}, {"areaName": "Hackney and City of London", "date": "2023-01-12", "rate": 16.8}, {"areaName": "Sheffield", "date": "2023-01-12", "rate": 36.7}, {"areaName": "Hackney and City of London", "date": "2023-01-13", "rate": 14.4}, {"areaName": "Sheffield", "date": "2023-01-13", "rate": 33.4}, {"areaName": "Sheffield", "date": "2023-01-14", "rate": 30.5}, {"areaName": "Hackney and City of London", "date": "2023-01-14", "rate": 13.7}, {"areaName": "Sheffield", "date": "2023-01-15", "rate": 29.4}, {"areaName": "Hackney and City of London", "date": "2023-01-15", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-16", "rate": 30.7}, {"areaName": "Hackney and City of London", "date": "2023-01-16", "rate": 12.0}, {"areaName": "Sheffield", "date": "2023-01-17", "rate": 27.5}, {"areaName": "Hackney and City of London", "date": "2023-01-17", "rate": 12.0}, {"areaName": "Hackney and City of London", "date": "2023-01-18", "rate": 13.0}, {"areaName": "Sheffield", "date": "2023-01-18", "rate": 26.6}, {"areaName": "Hackney and City of London", "date": "2023-01-19", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-19", "rate": 25.5}, {"areaName": "Hackney and City of London", "date": "2023-01-20", "rate": 11.0}, {"areaName": "Sheffield", "date": "2023-01-20", "rate": 23.3}, {"areaName": "Hackney and City of London", "date": "2023-01-21", "rate": 11.3}, {"areaName": "Sheffield", "date": "2023-01-21", "rate": 23.3}, {"areaName": "Sheffield", "date": "2023-01-22", "rate": 23.4}, {"areaName": "Hackney and City of London", "date": "2023-01-22", "rate": 10.6}, {"areaName": "Sheffield", "date": "2023-01-23", "rate": 22.6}, {"areaName": "Hackney and City of London", "date": "2023-01-23", "rate": 8.9}, {"areaName": "Sheffield", "date": "2023-01-24", "rate": 22.6}, {"areaName": "Hackney and City of London", "date": "2023-01-24", "rate": 9.9}, {"areaName": "Sheffield", "date": "2023-01-25", "rate": 25.1}, {"areaName": "Hackney and City of London", "date": "2023-01-25", "rate": 9.3}, {"areaName": "Sheffield", "date": "2023-01-26", "rate": 27.3}, {"areaName": "Hackney and City of London", "date": "2023-01-26", "rate": 9.9}, {"areaName": "Hackney and City of London", "date": "2023-01-27", "rate": 11.6}, {"areaName": "Sheffield", "date": "2023-01-27", "rate": 30.9}, {"areaName": "Sheffield", "date": "2023-01-28", "rate": 33.4}, {"areaName": "Hackney and City of London", "date": "2023-01-28", "rate": 12.7}]
+              },
+              "layer": [
+                {
+                  "mark": {"opacity": 0.7, "type": "area"},
+                  "encoding": {
+                    "y": {"aggregate": "sum", "field": "rate", "type": "quantitative"},
+                    "x": {"field": "date", "type": "temporal", "sort": "ascending"},
+                    "color": {
+                      "field": "areaName",
+                      "scale": {"range": ["#ca8861", "#675193"]},
+                      "type": "nominal"
+                    },
+                    "opacity": {"value": 0.7}
+                  }
+                },
+                {
+                  "mark": {"type": "line"},
+                  "encoding": {
+                    "y": {
+                      "aggregate": "sum",
+                      "field": "rate",
+                      "type": "quantitative",
+                      "stack": "zero"
+                    },
+                    "x": {"field": "date", "type": "temporal"},
+                    "color": {
+                      "field": "areaName",
+                      "scale": {"range": ["#ca8861", "#675193"]},
+                      "type": "nominal"
+                    },
+                    "opacity": {"value": 0.7}
+                  }
+                }
+              ]
+            }
+        </script>
+        </div>
+
+        <a href="https://colab.research.google.com/drive/1XKZk-CpcXtjY1XjUJTX6mAGr0eI-sbKL#scrollTo=lGQ0r2_-kFYW">Collab</a>
     </li>
     <li id="week4" class="figure">
         <h2>Week4</h2>
@@ -961,7 +1181,7 @@
                }
             }
             </script>
-            <p>There's a slight increase on the trade volumes but it also comes down July 2020 only to come back up again nearing 2021</p>
+            <p>There"s a slight increase on the trade volumes but it also comes down July 2020 only to come back up again nearing 2021</p>
         </div>
         <div class="vega-container">
             <div class="vega-canvas"></div>
