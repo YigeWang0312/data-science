@@ -13,7 +13,8 @@ main {
 
 h1, h2, h3, h4, h5, h6,
 ol.project table tr td:first-child,
-ol.project table thead tr:first-child th
+ol.project table thead tr:first-child th,
+a
 {
     font-family: Tahoma, Arial, sans-serif;
     font-weight:bold;
