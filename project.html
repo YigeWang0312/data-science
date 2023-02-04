@@ -293,8 +293,7 @@
                     <script type="text/data">
                         {
                             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                            "data":State-level sample sizes were sufficiently big, ranging between 300 and 3000+, although the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be attenuation biases from measurement errors. As such, the estimations in this work should be regarded as cautious.
-Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. I used OLS regressions, with state-level fixed effects version for robustness.  {
+                            "data": {
                                 "url": "data/states2.json",
                                 "format": {"type": "topojson", "feature": "states"}
                             },
