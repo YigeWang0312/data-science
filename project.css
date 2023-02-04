@@ -20,6 +20,13 @@ body#project {
       body#project ol.project > li.highlight table thead tr:first-child {
         background-color: #975138;
         color: #fff; }
+    body#project ol.project > li div.story {
+      border: 1px dashed #aaa;
+      padding: 1em 2em;
+      margin: 3em auto 5em;
+      text-align: center;
+      background: #555;
+      max-width: 600px; }
 
 @media only screen and (max-width: 1200px) {
   body#project ol.project > li {
