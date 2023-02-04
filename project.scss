@@ -28,13 +28,18 @@ body#project {
                 color:#fff;
             }
         }
-        div.story {
-            border:1px dashed #aaa;
-            padding:1em 2em;
-            margin:3em auto 5em;
+        div.colab {
             text-align:center;
-            background:#555;
             max-width:600px;
+            margin-left:auto;
+            margin-right:auto;
+            padding:1em 2em;
+        }
+        div.story.colab {
+            background:#555;
+            border:1px dashed #aaa;
+            margin-top:3em;
+            margin-bottom:5em;
         }
     }
 }

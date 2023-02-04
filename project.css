@@ -20,13 +20,17 @@ body#project {
       body#project ol.project > li.highlight table thead tr:first-child {
         background-color: #975138;
         color: #fff; }
-    body#project ol.project > li div.story {
-      border: 1px dashed #aaa;
-      padding: 1em 2em;
-      margin: 3em auto 5em;
+    body#project ol.project > li div.colab {
       text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1em 2em; }
+    body#project ol.project > li div.story.colab {
       background: #555;
-      max-width: 600px; }
+      border: 1px dashed #aaa;
+      margin-top: 3em;
+      margin-bottom: 5em; }
 
 @media only screen and (max-width: 1200px) {
   body#project ol.project > li {
