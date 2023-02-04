@@ -78,7 +78,8 @@ body#portfolio {
           width: 100%;
           max-width: 700px;
           text-align: center;
-          margin-left: auto; }
+          margin-left: auto;
+          margin-right: auto; }
       body#portfolio main > ol > li#week5, body#portfolio main > ol > li#week7 {
         text-align: center; }
       body#portfolio main > ol > li#week5 div.vega-containers div {
