@@ -26,19 +26,19 @@
     <li class="highlight">
         <h2>Introduction</h2>
         <p>
-            Despite the USA's vaccination programme urgency, there were significant regional differences in the population's coverage of the COVID-19 vaccine by the end of 2021. Using ordinary least squares and fixed-effects modelling, this research finds several socio-economic variables that contribute to variation in state-level vaccination coverage.
+            Despite USA's vaccination programme urgency, there were significant regional differences in the population's coverage of the COVID-19 vaccine by the end of 2021. Using Ordinary Least Squares (OLS) and fixed-effects modelling, this research finds several socio-economic variables that contribute to variation in state-level vaccination coverage
         </p>
     </li>
     <li>
         <h2>Data</h2>
         <p>
-            State-level vaccination, economic and sociodemographic data are sourced CDC, US Census Bureau, FRED, and US BLS. Due to missing data and measurement error effects between datasets, California, Hawaii, and New Hampshire have been left out during the modelling process. Statistics are divided into four groups:
+            State-level vaccination, economic and sociodemographic data are sourced from CDC, US Census Bureau, FRED, and US BLS. Due to missing data and measurement error effects between datasets, California, Hawaii, and New Hampshire have been left out during the modelling process. Statistics are divided into four groups:
         </p>
         <ol>
-            <li>Socio-economic status (average income, unemployment rate, percentage with a bachelor's degree or above, percentage with health insurance)</li>
-            <li>Ethnicity and race</li>
-            <li>Age (shares of population categorised by age)</li>
-            <li>Political Alignment (percentage of the population firmly supporting the Democrats, Republicans, or neither)</li>
+            <li>Socio-economic status (average income, unemployment rate, education level)</li>
+            <li>Ethnicity</li>
+            <li>Age</li>
+            <li>Political Alignment (Democrats, Republicans, or neither)</li>
         </ol>
     </li>
     <li class="table highlight">
@@ -293,7 +293,8 @@
                     <script type="text/data">
                         {
                             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                            "data": {
+                            "data":State-level sample sizes were sufficiently big, ranging between 300 and 3000+, although the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be attenuation biases from measurement errors. As such, the estimations in this work should be regarded as cautious.
+Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. I used OLS regressions, with state-level fixed effects version for robustness.  {
                                 "url": "data/states2.json",
                                 "format": {"type": "topojson", "feature": "states"}
                             },
@@ -326,69 +327,13 @@
         </div>
     </li>
     <li>
-        <h2>Data Quality Commentary</h2>
+        <h2>Data Quality & Methods</h2>
         <p>
-            Data on political affinity was gathered over the phone with few answer possibilities (Republican, Democrat, or neither). State-level sample sizes were sufficiently big, ranging between 300 and 3000+, even though the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be some attenuation biases from measurement errors. As a result, the estimations in this work should be regarded as cautious.
+            State-level sample sizes were sufficiently big, ranging between 300 and 3000+, although the data is based on a subjective measure and may not be entirely clear. The estimated coefficients will be skewed towards the mean since there may also be attenuation biases from measurement errors. As such, the estimations in this work should be regarded as cautious.
         </p>
-    </li>
-    <li class="table highlight">
-        <h2>Methods</h2>
         <p>
-            Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. We used Ordinary Least Squares regressions, with state-level fixed effects version for robustness. Different models are summarised in Table 2 below:
+            Before modelling, variables with insufficiently low (|r|< 0.5) Pearson product correlation coefficients when connected with other variables were removed. Models with low multicollinearity and variation inflation factors were chosen (VIF); unemployment rate, health insurance, and several racial groupings were disregarded as potential explanatory factors. I used OLS regressions, with state-level fixed effects version for robustness.
         </p>
-        <div class="table">
-        <table>
-            <thead>
-            <tr>
-                <th>Model</th>
-                <th>Equation</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1 (OLS)</td><td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei + εi</td>
-                <td>Regresses % state population fully vaccinated on:state-average income per capita (inc), % state population who strongly support Democrat (dem),proportion of state population who are Black (black),proportion of state population aged 34 and under (age)</td>
-            </tr>
-            <tr>
-                <td>2 (FE)</td><td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei+ βstatestatei + εi</td>
-                <td>Same regression as model (1) but now including a vector ofdummy variables for US states (state). β_state is a vector ofcoefficients</td>
-            </tr>
-            <tr>
-                <td>3 (OLS)</td><td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei+ β5inci2 + β6demi2 + β7blacki2 + β8agei2 + εi</td>
-                <td>An extention of model (1), includes squares of  all explanatory variables (inc^2, dem^2, black^2, age^2)</td>
-            </tr>
-            <tr>
-                <td>4 (FE)</td><td>Vi = β0 + β1inci + β2demi + β3blacki + β4agei+ β5inci2 + β6demi2 + β7blacki2 + β8agei2 + βstatestatei + εi</td>
-                <td>Same regression as model (3) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
-            </tr>
-            <tr>
-                <td>5 (OLS)</td><td>Vi = β0 + β1inci + β2demi + β3blacki+ β4agesegi + εi</td>
-                <td>An adjustment to model (1) by segmenting the age category. Regresses % state population fully vaccinated on:state-level income per capita (inc),% state population who strongly support Democrat (dem),proportion of state population who are black (black),proportion of state population aged 19-34 (ageseg)</td>
-            </tr>
-            <tr>
-                <td>6 (FE)</td><td>Vi = β0 + β1inci + β2demi + β3blacki+ β4agesegi + βstatestatei + εi</td>
-                <td>Same regression as model (5) but now includes a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
-            </tr>
-            <tr>
-                <td>7 (OLS)</td><td>Vi = β0 + β1demi + β2blacki + β3agesegi+ β4educi + εi</td>
-                <td>Regress % state population fully vaccinated on: % state population who strongly support Democrat (dem), proportion of state population who are black (black), proportion of state population aged 19-34 (ageseg), % state who have achieved Bachelor's degree or higher (educ)</td>
-            </tr>
-            <tr>
-                <td>8 (FE)</td><td>Vi = β0 + β1demi + β2blacki + β3agesegi + β4educi+ βstatestatei + εi</td>
-                <td>Same regression as model (7) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
-            </tr>
-            <tr>
-                <td>9 (OLS)</td><td>Vi = β0 + β1repubi + β2blacki + β3agesegi+ β4educi + εi</td>
-                <td>Same regression as model (7), but the dem variable has beenreplaced by repub (proportion of state population who stronglysupport Republican)</td>
-            </tr>
-            <tr>
-                <td>10 (FE)</td><td>Vi = β0 + β1repubi + β2blacki + β3agesegi + β4educi+ βstatestatei + εi</td>
-                <td>Same regression as model (9) but now including a vector of dummy variables for US states (state). β_state is a vector of coefficients</td>
-            </tr>
-            </tbody>
-        </table>
-        </div>
     </li>
     <li class="table highlight">
         <h2>Model Results</h2>
@@ -504,12 +449,15 @@
     </li>
     <li>
         <h4>Results</h4>
-
-        <p>Estimates of the coefficients for the explanatory variables of the models are shown in Table 3. A coefficient should be understood as the marginal effect that its explanatory variable has on the state vaccination rate, if all other variables are held constant. All models have relatively high R-squared values (> 0.78), which indicates that most of the variation in COVID-19 vaccination coverage across different states can be attributed to factors such as income per capita, political alignment, the percentage of the population that is black, age, and education.</p>
+        <p>
+            Estimates of the coefficients for the explanatory variables of the models are shown in Table 3. A coefficient should be understood as the marginal effect that its explanatory variable has on the state vaccination rate, if all other variables are held constant. All models have relatively high R-squared values (> 0.78), which indicates that most of the variation in COVID-19 vaccination coverage across different states can be attributed to factors such as income per capita, political alignment, ethnicity, age, and education.
+        </p>
 
         <ol>
             <li><strong>Income Per Capita</strong>
-                <p>In models 1, 3, and 5 the significant positive coefficient on per capita income implies an increase of $1 should correspond to an expected increase in state vaccination coverage between 0.0003% and 0.0018%. The coefficient on income per capita in the FE models is negative in model 2, indicating that the fixed effects are mostly responsible for the variance in vaccination coverage and that the income per capita effects are weaker than first believed.</p>
+                <p>
+                    In models 1, 3, and 5 the significant positive coefficient on per capita income implies an increase of $1 should correspond to an expected increase in state vaccination coverage between 0.0003% and 0.0018%. The coefficient on income per capita in the FE models is negative in model 2, indicating that the fixed effects are mostly responsible for the variance in vaccination coverage and that the income per capita effects are weaker than first believed.
+                </p>
 
                 <div class="vega-container">
                     <div class="vega-canvas"></div>
@@ -651,7 +599,7 @@
                 </div>
             </li>
             <li><strong>Political Alignment</strong>
-                <p>All OLS models, along with most of the FE models, show positive and substantial coefficients for a state's Democratic alignment. The predicted increase in state vaccination coverage by 1% should be between 0.6% and 2.4% on average, depending on how strongly the Democratic Party is represented in the state's population. Similarly, when model 7 and model 9 are compared, the Republican alignment coefficient is shown to be substantial, negative, and numerically close to the Democratic alignment coefficient. According to model 9, a 1% rise in the number of strongly Republican state residents should cause the state's vaccination coverage to drop by an average of 0.56%.</p>
+                <p>All OLS models, along with most of the FE models, show positive and substantial coefficients for Democratic alignment. The predicted increase in state vaccination coverage by 1% should be between 0.6% and 2.4% on average, depending on how strongly the Democratic Party is represented in the state's population. Similarly, when comparing model 7 and model 9, the Republican alignment coefficient appears substantial, negative, and numerically close to the Democratic alignment coefficient. According to model 9, a 1% rise in the number of Republican residents should cause the state's vaccination coverage to drop by an average of 0.56%..</p>
 
                 <div class="vega-container">
                     <div class="vega-canvas"></div>
@@ -932,7 +880,7 @@
                 </div>
             </li>
             <li><strong>Black Population</strong>
-                <p>In all OLS models, the coefficient on the Black population is negative and substantial. Therefore, a 1% increase in a state's share of black people should result in a projected fall in the state's vaccination coverage of between 0.24% and 0.37%. In FE models, it is less significant and occasionally even positive, indicating that the state level fixed effects are mostly responsible for the fluctuation.</p>
+                <p>In all OLS models, the coefficient on the Black population is negative and substantial. A 1% increase in black population should result in a projected 0.24% - 0.37% fall in the state's vaccination coverage. In FE models, it is less significant and occasionally even positive, indicating that the state level fixed effects are mostly responsible for the fluctuation.</p>
                 <div class="vega-container">
                     <div class="vega-canvas"></div>
                     <div class="vega-caption">Graph 4: Black Population Density  and Vaccination Coverag</div>
@@ -1078,7 +1026,7 @@
                 </div>
             </li>
             <li><strong>Young Population</strong>
-                <p>In its OLS models, the age coefficient for the larger 0 to 34 age range is substantial and negative. In contrast, the coefficient for the narrower age variable of 19 to 34 is also negative and significant within its OLS models, meaning that an expected decrease in state vaccination coverage of between 1.25% and 1.71% should result from a 1% increase in the proportion of the population in a state aged between 19 and 34. Although both variables' coefficients are still negative in all except 2 and 8 FE models, they are not significant.</p>
+                <p>In its OLS models, the age coefficient for the age variable of 19 to 34 is negative and significant, meaning that an expected decrease in state vaccination coverage of between 1.25% and 1.71% should result from a 1% increase in the proportion of state population aged between 19 and 34. </p>
 
                 <div class="vega-container">
                     <div class="vega-canvas"></div>
@@ -1227,8 +1175,9 @@
                     </script>
                 </div>
             </li>
-            <li><strong>Education Level</strong>
-                <p>Finally, a 1% rise in the percentage of a state's population with a bachelor's degree or more should result in an average increase in state vaccination coverage of between 0.67% and 0.79%, according to OLS models and FE model 8 where the coefficient on education is positive and substantial. Most of these state-level findings concur with individual-level findings from the highlighted logistic models in Section 2.</p>
+            <li>
+                <strong>Education Level</strong>
+                <p>A 1% rise in the percentage of population with university degrees should result in an average increase in state vaccination coverage of between 0.67% and 0.79%, according to OLS models and FE model 8 where the coefficient on education is positive and substantial.</p>
 
                 <div class="vega-container">
                     <div class="vega-canvas"></div>
@@ -1382,7 +1331,7 @@
     <li>
         <h2>Policy Guidance (based on the OLS results)</h2>
         <p>
-            By identifying key characteristics at state-level that contribute to differences in vaccination rates, it is essential that local authorities target against vaccine misinformation, which is characterised by republican political alignment, as well as cultural factors within the black community. Financial and educational barriers must also be targeted, ensuring people are aware that vaccines are freely available in a country that is often assumed to privately gatekeep all healthcare.
+            By identifying key characteristics that contribute to differences in vaccination rates, it is essential that local authorities target against vaccine misinformation, characterised by republican political alignment, as well as cultural factors within the black community. Financial and educational barriers must also be targeted, ensuring people are aware that vaccines are freely available in a country that is often assumed to privately gatekeep all healthcare.
         </p>
     </li>
 </ol>
