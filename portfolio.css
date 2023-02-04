@@ -69,14 +69,24 @@ body#portfolio {
           width: 100%;
           max-width: 800px;
           margin: auto; }
+      body#portfolio main > ol > li div.vega-containers {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; }
+        body#portfolio main > ol > li div.vega-containers div.vega-container {
+          display: block;
+          width: 100%;
+          max-width: 700px;
+          text-align: center;
+          margin-left: auto; }
       body#portfolio main > ol > li#week5, body#portfolio main > ol > li#week7 {
         text-align: center; }
-        body#portfolio main > ol > li#week5 div.vega-containers, body#portfolio main > ol > li#week7 div.vega-containers {
-          display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap; }
-          body#portfolio main > ol > li#week5 div.vega-containers div.vega-container, body#portfolio main > ol > li#week7 div.vega-containers div.vega-container {
-            display: inline-block; }
+      body#portfolio main > ol > li#week5 div.vega-containers div {
+        background: #333;
+        margin: 0.5em;
+        padding: 1em; }
+      body#portfolio main > ol > li#week5 div.vega-containers > div:first-child {
+        background: #222; }
       body#portfolio main > ol > li#week8 div.vega-container {
         text-align: center; }
       body#portfolio main > ol > li blockquote {

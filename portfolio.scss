@@ -94,14 +94,30 @@ body#portfolio {
           margin:auto;
         }
       }
+      div.vega-containers {
+        display:flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        div.vega-container {
+          display:block;
+          width:100%;
+          max-width:700px;
+          text-align:center;
+          margin-left:auto;
+        }
+      }
       &#week5, &#week7 {
         text-align:center;
+      }
+      &#week5 {
         div.vega-containers {
-          display:flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
-          div.vega-container {
-            display:inline-block;
+          div {
+            background:#333;
+            margin:0.5em;
+            padding:1em;
+          }
+          > div:first-child {
+            background:#222;
           }
         }
       }

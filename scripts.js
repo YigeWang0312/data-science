@@ -1,7 +1,7 @@
 let mapWidth;
 document.querySelectorAll('div.vega-container').forEach(
     async function(el) {
-        mapWidth = mapWidth ?? Math.min(800,el.clientWidth*0.78);
+        mapWidth = mapWidth ?? Math.min(800,el.clientWidth*0.75);
         const vegaDiv = el.querySelector('div.vega-canvas');
         const dataFunction = vegaDiv.getAttribute('data-data-function');
         const dataEl = el.querySelector('script[type="text/data"]');
