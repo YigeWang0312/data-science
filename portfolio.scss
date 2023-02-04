@@ -20,22 +20,6 @@ body#portfolio {
         color:#999;
         text-decoration: underline;
       }
-      a[href*='colab.research.google.com'] {
-        display:block;
-        position:relative;
-        margin:auto;
-        padding:0.5em 1em;
-        margin-top:0.5em;
-        margin-bottom:0.5em;
-        max-width:5em;
-        background-color:#303972;
-        color:#b5b5b5;
-        text-decoration: none;
-        border-radius:3px;
-        font-weight:bold;
-        text-transform:uppercase;
-        font-size:0.8em;
-      }
       &:nth-child(even):not(.half) {
         background-color:#222;
       }

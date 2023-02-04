@@ -17,21 +17,6 @@ body#portfolio {
       body#portfolio main > ol > li a {
         color: #999;
         text-decoration: underline; }
-      body#portfolio main > ol > li a[href*='colab.research.google.com'] {
-        display: block;
-        position: relative;
-        margin: auto;
-        padding: 0.5em 1em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        max-width: 5em;
-        background-color: #303972;
-        color: #b5b5b5;
-        text-decoration: none;
-        border-radius: 3px;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.8em; }
       body#portfolio main > ol > li:nth-child(even):not(.half) {
         background-color: #222; }
       body#portfolio main > ol > li#week1, body#portfolio main > ol > li#week2, body#portfolio main > ol > li#week3-1, body#portfolio main > ol > li#week4, body#portfolio main > ol > li#week8, body#portfolio main > ol > li#week9, body#portfolio main > ol > li#week10, body#portfolio main > ol > li#week11, body#portfolio main > ol > li.half {

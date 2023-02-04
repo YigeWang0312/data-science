@@ -293,6 +293,23 @@ ol.project table thead tr:first-child {
 ol.project table th a.source {
   font-size: 0.7em; }
 
+a[href*='colab.research.google.com'] {
+  display: block;
+  position: relative;
+  margin: auto;
+  padding: 0.5em 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  max-width: 5em;
+  background-color: #303972;
+  color: #b5b5b5;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  text-align: center; }
+
 @media only screen and (max-width: 1200px) {
   body {
     padding: 0;
